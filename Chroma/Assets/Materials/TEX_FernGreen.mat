@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: TEX_FernGreen
-  m_Shader: {fileID: 4800000, guid: eb034d201b6ce99499510583e5a4c5c7, type: 3}
+  m_Shader: {fileID: 4800000, guid: e570c2adf90d6a24b8634788025bb2bb, type: 3}
   m_ShaderKeywords: _EMISSION _LIGHTMODE_DEFAULT _USE_M_TEX
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
@@ -81,10 +81,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - first:
+        name: _node_6240
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - first:
         name: _Bands
-      second: 4
+      second: 2
     - first:
         name: _Brightness
       second: 1
@@ -148,6 +154,9 @@ Material:
     - first:
         name: _RimSize
       second: 3
+    - first:
+        name: _Shadowbrightness
+      second: 0
     - first:
         name: _Shininess
       second: 20

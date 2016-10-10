@@ -31,6 +31,17 @@ public class CameraController : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+		if(this.name == "Main Camera")
+		{
+			FollowedObject = GameObject.Find("Player 1");
+			TrackedObject = GameObject.Find("Player 2");
+		}
+		else if(this.name == "Camera")
+		{
+			FollowedObject = GameObject.Find("Player 2");
+			TrackedObject = GameObject.Find("Player 1");
+		}
+
 		CameraPivot = transform.parent;
 		UpdatePivotRotation();
 

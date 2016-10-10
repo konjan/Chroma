@@ -7,10 +7,6 @@ public class Attack : MonoBehaviour
    // public CollisionSoul soulAttack;
 	public GameObject[] colliders;
     public TrailRenderer trail;
-	public string[] PrimaryCombos;
-	public string[] SecondaryCombos;
-	public int PrimaryCount = 0;
-	public int SecondaryCount = 0;
 
 	private AnimatorStateInfo CurrentState;
 
@@ -37,7 +33,6 @@ public class Attack : MonoBehaviour
     void FixedUpdate()
     {
 		ActionUpdate();
-        Debug.Log(Player.isAttacking);
 	}
 
 	void ActionUpdate()
@@ -123,8 +118,6 @@ public class Attack : MonoBehaviour
 		Player.SecondaryAttack = false;
 		Player.PrimaryAttack = false;
 		Player.isAttacking = false;
-
-		Debug.Log("Colliders Off");
 
         colliders[0].GetComponent<BoxCollider>().enabled = false;
         trail.gameObject.SetActive(false);

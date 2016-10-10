@@ -24,6 +24,19 @@ public class Movement : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+		if (this.name == "Player 1")
+		{
+			Player.Joystick = JoystickNum.Joystick1;
+
+			cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+		}
+		else if (this.name == "Player 2")
+		{
+			Player.Joystick = JoystickNum.Joystick2;
+
+			cam = GameObject.Find("Camera").GetComponent<Camera>();
+		}
+
 		Player.isGrounded = true;
         isMoving = false;
         jumpAmount = 0;
@@ -44,6 +57,9 @@ public class Movement : MonoBehaviour
 
 			if (Input.GetButtonDown(Player.Joystick + "Jump"))
 			{
+				Debug.Log(Player.Joystick + "Jump");
+				//Double Jump code
+				/*
 				if (!Player.isGrounded && Player.DoubleJump && !Player.isAttacking)
 				{
 					//Update to only activate on Normal Jump loop
@@ -54,7 +70,8 @@ public class Movement : MonoBehaviour
 					Player.rb.velocity = new Vector3(Player.rb.velocity.x, 0, Player.rb.velocity.z);
 					Player.rb.AddForce(0, 8, 0, ForceMode.Impulse);
 				}
-				else if (Player.isGrounded == true)
+				*/
+				if (Player.isGrounded == true)
 				{
 					Player.rb.AddForce(0, 8, 0, ForceMode.Impulse);
 

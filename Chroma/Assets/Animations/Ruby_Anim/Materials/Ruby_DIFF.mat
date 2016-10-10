@@ -42,7 +42,7 @@ Material:
     - first:
         name: _Diffuse
       second:
-        m_Texture: {fileID: 2800000, guid: 0b531387ac77c504d86cce7ca7a554eb, type: 3}
+        m_Texture: {fileID: 2800000, guid: 60f3f2abcea56044782d4190a6c3ebf0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -90,7 +90,7 @@ Material:
     m_Floats:
     - first:
         name: _Bands
-      second: 3
+      second: 2
     - first:
         name: _Brightness
       second: 0.96
@@ -147,7 +147,7 @@ Material:
       second: 0.02
     - first:
         name: _OutlineWidth
-      second: 2
+      second: 1.58
     - first:
         name: _Parallax
       second: 0.02

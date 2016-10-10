@@ -60,7 +60,6 @@ public class PlayerValues : MonoBehaviour {
     public float m_Speed = 5;
 
     //-----Access to the animator, used for all animations
-	[HideInInspector]
 	public Animator PlayerAnimation = new Animator();
 
 
@@ -98,7 +97,7 @@ public class PlayerValues : MonoBehaviour {
 	public ParticleSystem Soul;
     public GameObject pow;
     private float powActive = 0.2f;
-	public float changescene = 5;
+	private float changescene = 5;
 
 	private float SoulTime = 0.5f;
 	private bool SoulRaise = false;
@@ -112,7 +111,6 @@ public class PlayerValues : MonoBehaviour {
 		m_Health = MAX_HEALTH;
         SoulSlider.maxValue = 100;
         PlayerSlider.value = m_Health;
-        PlayerAnimation = this.GetComponentInChildren<Animator>();
 
 		Win.gameObject.SetActive(false);
 	}

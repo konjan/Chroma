@@ -1,0 +1,218 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1011 &101100000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: NakiArms
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Naki_Finished:polySurface12
+    m_Weight: 1
+  - m_Path: Naki_Root
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_LeftUpLeg
+    m_Weight: 0
+  - m_Path: Naki_Root/Character1_Hips/Character1_LeftUpLeg/Character1_LeftLeg
+    m_Weight: 0
+  - m_Path: Naki_Root/Character1_Hips/Character1_LeftUpLeg/Character1_LeftLeg/Character1_LeftFoot
+    m_Weight: 0
+  - m_Path: Naki_Root/Character1_Hips/Character1_LeftUpLeg/Character1_LeftLeg/Character1_LeftFoot/Character1_LeftToeBase
+    m_Weight: 0
+  - m_Path: Naki_Root/Character1_Hips/Character1_RightUpLeg
+    m_Weight: 0
+  - m_Path: Naki_Root/Character1_Hips/Character1_RightUpLeg/Character1_RightLeg
+    m_Weight: 0
+  - m_Path: Naki_Root/Character1_Hips/Character1_RightUpLeg/Character1_RightLeg/Character1_RightFoot
+    m_Weight: 0
+  - m_Path: Naki_Root/Character1_Hips/Character1_RightUpLeg/Character1_RightLeg/Character1_RightFoot/Character1_RightToeBase
+    m_Weight: 0
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Back_Lower_Body_Sqush_JNT
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Back_Middle_Body_Sqush_JNT
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Back_Upper_Body_Sqush_JNT
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_LeftShoulder
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_LeftShoulder/Character1_LeftArm
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_LeftShoulder/Character1_LeftArm/Character1_LeftForeArm
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_LeftShoulder/Character1_LeftArm/Character1_LeftForeArm/Character1_LeftHand
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_LeftShoulder/Character1_LeftArm/Character1_LeftForeArm/Character1_LeftHand/Character1_LeftHandIndex1
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_LeftShoulder/Character1_LeftArm/Character1_LeftForeArm/Character1_LeftHand/Character1_LeftHandIndex1/Character1_LeftHandIndex2
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_LeftShoulder/Character1_LeftArm/Character1_LeftForeArm/Character1_LeftHand/Character1_LeftHandIndex1/Character1_LeftHandIndex2/Character1_LeftHandIndex3
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_LeftShoulder/Character1_LeftArm/Character1_LeftForeArm/Character1_LeftHand/Character1_LeftHandThumb1
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_LeftShoulder/Character1_LeftArm/Character1_LeftForeArm/Character1_LeftHand/Character1_LeftHandThumb1/Character1_LeftHandThumb2
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Character1_Head_4
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Character1_Head_4/Back_Head_Squash_JNT
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Character1_Head_4/Back_Head_Squash_JNT/joint1
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Character1_Head_4/Back_Head_Squash_JNT/joint1/joint2
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Character1_Head_4/Back_Head_Squash_JNT/joint1/joint2/joint3
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Character1_Head_4/Back_Head_Squash_JNT/joint1/joint2/joint3/joint4
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Character1_Head_4/Back_Head_Squash_JNT/joint1/joint2/joint3/joint4/joint5
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Character1_Head_4/Back_Head_Squash_JNT/joint1/joint2/joint3/joint4/joint5/joint6
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Character1_Head_4/Back_Head_Squash_JNT/joint1/joint2/joint3/joint4/joint5/joint6/joint7
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Character1_Head_4/Character1_HeadNub
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Character1_Head_4/Front_Head_Squash_JNT
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Character1_Head_4/Left_Head_Squash_JNT
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Character1_Head_4/Right_Head_Squash_JNT
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Face_Squash_JNT
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Left_Ear_JNT
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Left_Ear_JNT/Left_Ear_JNT_2
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Left_Ear_JNT/Left_Ear_JNT_2/Left_Ear_JNT_3
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Left_Ear_JNT/Left_Front_Hair_JNT_1
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Left_Ear_JNT/Left_Front_Hair_JNT_1/Left_Front_Hair_JNT_2
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Left_Ear_JNT/Left_Front_Hair_JNT_1/Left_Front_Hair_JNT_2/Left_Front_Hair_JNT_3
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Main_hair_JNT
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Right_Ear_JNT
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Right_Ear_JNT/Right_Ear_JNT_2
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Right_Ear_JNT/Right_Ear_JNT_2/Right_Ear_JNT_3
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Right_Ear_JNT/Right_Front_Hair_JNT_1
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Right_Ear_JNT/Right_Front_Hair_JNT_1/Right_Front_Hair_JNT_2
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Head_3/Right_Ear_JNT/Right_Front_Hair_JNT_1/Right_Front_Hair_JNT_2/Right_Front_Hair_JNT_3
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Jaw_1
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Jaw_1/Character1_Jaw_2
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Jaw_1/Character1_Jaw_2/Left_Jaw_Squash_2
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Jaw_1/Character1_Jaw_2/Right_Jaw_Squash_2
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Jaw_1/Left_Jaw_Squash_1
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_Neck/Character1_Head_1/Character1_Head_2/Character1_Jaw_1/Right_Jaw_Squash_1
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_RightShoulder
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_RightShoulder/Character1_RightArm
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_RightShoulder/Character1_RightArm/Character1_RightForeArm
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_RightShoulder/Character1_RightArm/Character1_RightForeArm/Character1_RightHand
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_RightShoulder/Character1_RightArm/Character1_RightForeArm/Character1_RightHand/Character1_RightHandIndex1
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_RightShoulder/Character1_RightArm/Character1_RightForeArm/Character1_RightHand/Character1_RightHandIndex1/Character1_RightHandIndex2
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_RightShoulder/Character1_RightArm/Character1_RightForeArm/Character1_RightHand/Character1_RightHandIndex1/Character1_RightHandIndex2/Character1_RightHandIndex3
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_RightShoulder/Character1_RightArm/Character1_RightForeArm/Character1_RightHand/Character1_RightHandThumb1
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_RightShoulder/Character1_RightArm/Character1_RightForeArm/Character1_RightHand/Character1_RightHandThumb1/Character1_RightHandThumb2
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_RightShoulder/Character1_RightArm/Character1_RightForeArm/Character1_RightHand/joint9
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_RightShoulder/Character1_RightArm/Character1_RightForeArm/Character1_RightHand/joint9/joint10
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_RightShoulder/Character1_RightArm/Character1_RightForeArm/Character1_RightHand/joint9/joint10/joint11
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_RightShoulder/Character1_RightArm/Character1_RightForeArm/Character1_RightHand/joint9/joint10/joint11/joint12
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_RightShoulder/Character1_RightArm/Character1_RightForeArm/Character1_RightHand/joint9/joint10/joint11/joint12/joint13
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_RightShoulder/Character1_RightArm/Character1_RightForeArm/Character1_RightHand/joint9/joint14
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_RightShoulder/Character1_RightArm/Character1_RightForeArm/Character1_RightHand/joint9/joint14/joint15
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_RightShoulder/Character1_RightArm/Character1_RightForeArm/Character1_RightHand/joint9/joint14/joint15/joint16
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_RightShoulder/Character1_RightArm/Character1_RightForeArm/Character1_RightHand/joint9/joint14/joint15/joint16/joint17
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Front_Upper_Body_Sqush_JNT
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Left_Upper_Body_Sqush_JNT
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Right_Upper_Body_Sqush_JNT
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Front_Middle_Body_Sqush_JNT
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Left_Middle_Body_Sqush_JNT
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Character1_Spine1/Right_Middle_Body_Sqush_JNT
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Front_Lower_Body_Sqush_JNT
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Left_Lower_Body_Sqush_JNT
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Character1_Spine/Right_Lower_Body_Sqush_JNT
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Left_Skirt_JNT_1
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Left_Skirt_JNT_1/Left_Skirt_JNT_2
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Left_Skirt_JNT_1/Left_Skirt_JNT_2/Left_Skirt_JNT_3
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Left_Skirt_JNT_1/Left_Skirt_JNT_2/Left_Skirt_JNT_3/Left_Skirt_JNT_4
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Middle_Skirt_JNT_1
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Middle_Skirt_JNT_1/Middle_Skirt_JNT_2
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Middle_Skirt_JNT_1/Middle_Skirt_JNT_2/Middle_Skirt_JNT_3
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Middle_Skirt_JNT_1/Middle_Skirt_JNT_2/Middle_Skirt_JNT_3/joint8
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Right_Skirt_JNT_1
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Right_Skirt_JNT_1/Right_Skirt_JNT_2
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Right_Skirt_JNT_1/Right_Skirt_JNT_2/Right_Skirt_JNT_3
+    m_Weight: 1
+  - m_Path: Naki_Root/Character1_Hips/Right_Skirt_JNT_1/Right_Skirt_JNT_2/Right_Skirt_JNT_3/Right_Skirt_JNT_4
+    m_Weight: 1
+  - m_Path: Naki_Staff:BoStaff_Mesh
+    m_Weight: 1
