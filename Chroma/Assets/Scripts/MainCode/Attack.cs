@@ -4,32 +4,35 @@ using System.Collections;
 public class Attack : MonoBehaviour
 {
 	public PlayerValues Player;
-	// public CollisionSoul soulAttack;
-
-
-	public AnimatorData anim;
+   // public CollisionSoul soulAttack;
 	public GameObject[] colliders;
-    public TrailRenderer[] trails;
-
+    public TrailRenderer trail;
+	public string[] PrimaryCombos;
+	public string[] SecondaryCombos;
+	public int PrimaryCount = 0;
+	public int SecondaryCount = 0;
+    public Transform dashDest;
 	private AnimatorStateInfo CurrentState;
-
+    
 	public float leewayTime = 4.5f;
     public float blockTime;
+
+    // --- DASH VAR --- // 
+    private float dashTime;
+    private bool isDashing;
+
     // Use this for initialization
     void Start()
     {
         Player.SecondaryAttack = false;
         Player.PrimaryAttack = false;
         Player.isAttacking = false;
-
-		//colliders = anim.CollisionBoxes;
-		//trails = anim.Trails;
-
         for (int i = 0; i < colliders.Length; i++ )
 			colliders[i].GetComponent<BoxCollider>().enabled = false;
-		//     soulAttack.GetComponent<CollisionSoul>();
-		for (int i = 0; i < trails.Length; i++)
-			trails[i].gameObject.SetActive(false);
+   //     soulAttack.GetComponent<CollisionSoul>();
+        trail.gameObject.SetActive(false);
+
+        dashTime = 0.6f;
     }
 
     // Update is called once per frame
@@ -41,11 +44,32 @@ public class Attack : MonoBehaviour
     void FixedUpdate()
     {
 		ActionUpdate();
+        Debug.Log(Player.isAttacking);
 	}
 
 	void ActionUpdate()
 	{
-      
+        //---- DASH CODE----//
+        if (Input.GetButtonDown(Player.Joystick + "Dash"))
+        {
+            isDashing = true;
+             
+        }
+        if (isDashing && dashTime >= 0.0f)
+        {
+            Dash();
+            dashTime -= Time.deltaTime;
+        }
+
+        if (dashTime <= 0.0f)
+        {
+            isDashing = false;
+            dashTime = 0.6f;
+        }
+
+        
+
+
         //-----BLOCK CODE-----//
         if (Player.isGrounded && Input.GetButtonDown(Player.Joystick + "Block"))
         {      
@@ -95,26 +119,37 @@ public class Attack : MonoBehaviour
                 //Activating the animation trigger
                 Player.PlayerAnimation.SetTrigger("SecondaryTrigger");
             }
-   
 
+
+            // --- MOAR DASH--- //
+    
 
         }
-        
-	}
+        if (!Player.isAttacking)
+            CollidersOff();
+
+
+
+
+
+    }
 
     public void CollidersOn()
     {
 		Debug.Log("Colliders On");
-
 		if (Player.PrimaryAttack)
+		{
+			colliders[0].GetComponent<BoxCollider>().enabled = true;
 			colliders[0].tag = "PrimaryAttack";
+            trail.gameObject.SetActive(true);
+        }
 		else if (Player.SecondaryAttack)
+		{
+			colliders[0].GetComponent<BoxCollider>().enabled = true;
 			colliders[0].tag = "SecondaryAttack";
-
-		colliders[0].GetComponent<BoxCollider>().enabled = true;
-		foreach (TrailRenderer i in trails)
-			i.gameObject.SetActive(true);
-	}
+            trail.gameObject.SetActive(true);
+        }
+    }
 
     public void CollidersOff()
     {
@@ -122,12 +157,34 @@ public class Attack : MonoBehaviour
 		Player.PrimaryAttack = false;
 		Player.isAttacking = false;
 
+		Debug.Log("Colliders Off");
+
         colliders[0].GetComponent<BoxCollider>().enabled = false;
+        trail.gameObject.SetActive(false);
     }
 
-	 public void TrailsOff()
-	{
-		foreach (TrailRenderer i in trails)
-			i.gameObject.SetActive(false);
-	}
+    //---DASH---//
+    public void Dash()
+    {
+        Vector3 t;
+        
+        float speed = 8.0f;
+        if (Player.Targeted) // IF lockedOn
+            t = Player.Opponent.transform.position;
+        else
+            t = dashDest.transform.position;
+
+
+        if (isDashing)            
+            Player.transform.position = Vector3.MoveTowards(Player.transform.position, t, Time.deltaTime * speed);
+
+        //--SLOWING DOWN THE PLAYER, FIXES A BUG--//
+        float dist = Vector3.Distance(Player.transform.position, Player.Opponent.transform.position);
+        if (dist <= 2.0f)        
+            speed = 5.0f;
+
+        if (dist <= 0.1f)
+            speed = 0.0f;
+           
+    }
 }
