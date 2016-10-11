@@ -143,10 +143,10 @@ public class Movement : MonoBehaviour
 		}
 
 		////-----Force Player to look at opponent if Targeted
-		//if (Player.Targeted)
-		//	Player.rb.transform.LookAt(new Vector3(Player.Opponent.transform.position.x, transform.position.y, Player.Opponent.transform.position.z));
+		if (Player.Targeted)
+			Player.rb.transform.LookAt(new Vector3(Player.Opponent.transform.position.x, transform.position.y, Player.Opponent.transform.position.z));
 
-		if (Physics.Raycast(transform.position, Vector3.down, 3) == false && Player.isGrounded == true)
+		if (Physics.Raycast(transform.position, Vector3.down, 2) == false && Player.isGrounded == true)
 		{
 			Player.isGrounded = false;
 			Player.PlayerAnimation.SetBool("isGrounded", false);

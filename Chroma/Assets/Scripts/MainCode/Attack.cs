@@ -4,9 +4,12 @@ using System.Collections;
 public class Attack : MonoBehaviour
 {
 	public PlayerValues Player;
-   // public CollisionSoul soulAttack;
+	// public CollisionSoul soulAttack;
+
+
+	public AnimatorData anim;
 	public GameObject[] colliders;
-    public TrailRenderer trail;
+    public TrailRenderer[] trails;
 
 	private AnimatorStateInfo CurrentState;
 
@@ -18,10 +21,15 @@ public class Attack : MonoBehaviour
         Player.SecondaryAttack = false;
         Player.PrimaryAttack = false;
         Player.isAttacking = false;
+
+		//colliders = anim.CollisionBoxes;
+		//trails = anim.Trails;
+
         for (int i = 0; i < colliders.Length; i++ )
 			colliders[i].GetComponent<BoxCollider>().enabled = false;
-   //     soulAttack.GetComponent<CollisionSoul>();
-        trail.gameObject.SetActive(false);
+		//     soulAttack.GetComponent<CollisionSoul>();
+		for (int i = 0; i < trails.Length; i++)
+			trails[i].gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -91,27 +99,22 @@ public class Attack : MonoBehaviour
 
 
         }
-        if (!Player.isAttacking)
-            CollidersOff();
         
 	}
 
     public void CollidersOn()
     {
 		Debug.Log("Colliders On");
+
 		if (Player.PrimaryAttack)
-		{
-			colliders[0].GetComponent<BoxCollider>().enabled = true;
 			colliders[0].tag = "PrimaryAttack";
-            trail.gameObject.SetActive(true);
-        }
 		else if (Player.SecondaryAttack)
-		{
-			colliders[0].GetComponent<BoxCollider>().enabled = true;
 			colliders[0].tag = "SecondaryAttack";
-            trail.gameObject.SetActive(true);
-        }
-    }
+
+		colliders[0].GetComponent<BoxCollider>().enabled = true;
+		foreach (TrailRenderer i in trails)
+			i.gameObject.SetActive(true);
+	}
 
     public void CollidersOff()
     {
@@ -120,6 +123,11 @@ public class Attack : MonoBehaviour
 		Player.isAttacking = false;
 
         colliders[0].GetComponent<BoxCollider>().enabled = false;
-        trail.gameObject.SetActive(false);
     }
+
+	 public void TrailsOff()
+	{
+		foreach (TrailRenderer i in trails)
+			i.gameObject.SetActive(false);
+	}
 }

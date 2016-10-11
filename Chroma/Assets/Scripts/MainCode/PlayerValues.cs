@@ -61,6 +61,7 @@ public class PlayerValues : MonoBehaviour {
 
     //-----Access to the animator, used for all animations
 	public Animator PlayerAnimation = new Animator();
+	//public AnimatorData AnimData;
 
 
     //----------ATTACK VARIABLES-----//
@@ -73,6 +74,8 @@ public class PlayerValues : MonoBehaviour {
     public bool PrimaryAttack = false;
 	[HideInInspector]
 	public bool SecondaryAttack = false;
+
+	private float HitTimer = 0.0f;
 
     //----------EXTRA VARIABLES-----//
 	//-----Gravity Variables
@@ -113,6 +116,9 @@ public class PlayerValues : MonoBehaviour {
         PlayerSlider.value = m_Health;
 
 		Win.gameObject.SetActive(false);
+
+		//PlayerAnimation = GetComponentInChildren<Animator>();
+		//AnimData = GetComponentInChildren<AnimatorData>();
 	}
 	
 	// Update is called once per frame
@@ -209,8 +215,7 @@ public class PlayerValues : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col)
 	{
-       
-        if (!isBlocking)
+		if (!isBlocking && HitTimer == 0)
 		{
             if (col.gameObject.tag == "PrimaryAttack")
             {
@@ -221,13 +226,13 @@ public class PlayerValues : MonoBehaviour {
                 //col.enabled = false;
                 PlayerAnimation.SetTrigger("TempHit");
                 Debug.Log("Colliders Off from hit");
-                pow.transform.position = col.transform.position;
-                pow.SetActive(true);
-                SoulRaise = true;
-            }
-            else
-                isAttacking = false;
-            if (col.gameObject.tag == "SecondaryAttack")
+
+				pow.transform.position = col.transform.position;
+				pow.SetActive(true);
+
+				SoulRaise = true;
+			}
+            else if (col.gameObject.tag == "SecondaryAttack")
             {
                 m_damage = 5.0f;
                 m_Health -= m_damage;
@@ -236,14 +241,13 @@ public class PlayerValues : MonoBehaviour {
                 PlayerAnimation.SetTrigger("TempHit");
                 Debug.Log("Colliders Off from hit");
 
-                SoulRaise = true;
-            }
-            else
-                isAttacking = false;
+				pow.transform.position = col.transform.position;
+				pow.SetActive(true);
 
+				SoulRaise = true;
+			}
+			// if (col.gameObject.tag == "projectile")
 
-           // if (col.gameObject.tag == "projectile")
-                
 		}
 	}
 

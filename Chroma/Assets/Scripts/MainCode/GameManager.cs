@@ -35,8 +35,8 @@ public class GameManager : MonoBehaviour {
 		MainCamera = GameObject.Find("Camera Pivot").GetComponentInChildren<Camera>();
 		Player2Camera = GameObject.Find("Camera 2 Pivot").GetComponentInChildren<Camera>();
 
-		Player1 = GameObject.Find("Player1").GetComponent<PlayerValues>();
-		Player2 = GameObject.Find("Player2").GetComponent<PlayerValues>();
+		Player1 = GameObject.Find("Player 1").GetComponent<PlayerValues>();
+		Player2 = GameObject.Find("Player 2").GetComponent<PlayerValues>();
 
 		Timer = maxTime;
 	}

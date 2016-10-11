@@ -153,6 +153,28 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!114 &114000012548715458
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b17ceb9dfdb8c41bf48a95b7fc5e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114000013597386658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b17ceb9dfdb8c41bf48a95b7fc5e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!206 &206000010847412202
 BlendTree:
   m_ObjectHideFlags: 3
@@ -215,7 +237,7 @@ BlendTree:
     m_DirectBlendParameter: MovingX
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 22e83b4bd4aef734d94739e1dc611fab, type: 3}
+    m_Motion: {fileID: 7400000, guid: 0bf5dea269dc2b141a7753af82a748ef, type: 3}
     m_Threshold: 0.6666667
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
@@ -223,7 +245,7 @@ BlendTree:
     m_DirectBlendParameter: MovingX
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 0bf5dea269dc2b141a7753af82a748ef, type: 3}
+    m_Motion: {fileID: 7400000, guid: 22e83b4bd4aef734d94739e1dc611fab, type: 3}
     m_Threshold: 1
     m_Position: {x: -1, y: 0}
     m_TimeScale: 1
@@ -1915,7 +1937,7 @@ AnimatorStateMachine:
     m_Position: {x: -252, y: 132, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102000013756287648}
-    m_Position: {x: -516, y: -12, z: 0}
+    m_Position: {x: -492, y: -12, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102000011395694992}
     m_Position: {x: -12, y: 60, z: 0}
@@ -1932,11 +1954,12 @@ AnimatorStateMachine:
       first: {fileID: 0}
       second:
       - {fileID: 1109000010631993110}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114000012548715458}
   m_AnyStatePosition: {x: 12, y: 156, z: 0}
   m_EntryPosition: {x: 12, y: 132, z: 0}
   m_ExitPosition: {x: 0, y: -12, z: 0}
-  m_ParentStateMachinePosition: {x: 240, y: 132, z: 0}
+  m_ParentStateMachinePosition: {x: 168, y: -24, z: 0}
   m_DefaultState: {fileID: 1102000010338357404}
 --- !u!1107 &1107000010465599986
 AnimatorStateMachine:
@@ -2158,7 +2181,8 @@ AnimatorStateMachine:
       first: {fileID: 0}
       second:
       - {fileID: 1109000011626451772}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114000013597386658}
   m_AnyStatePosition: {x: 312, y: 156, z: 0}
   m_EntryPosition: {x: -168, y: 48, z: 0}
   m_ExitPosition: {x: 72, y: 48, z: 0}
