@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerSelection : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class PlayerSelection : MonoBehaviour {
 	private bool AxisInUse = false;
 
 	public JoystickNum Joystick = JoystickNum.Keyboard;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -28,7 +30,10 @@ public class PlayerSelection : MonoBehaviour {
 
 		if (CharacterList[Index])
 			CharacterList[Index].SetActive(true);
-	}
+
+
+
+    }
 	
 	// Update is called once per frame
 	void Update ()
