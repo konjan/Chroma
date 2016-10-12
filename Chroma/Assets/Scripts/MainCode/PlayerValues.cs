@@ -75,7 +75,8 @@ public class PlayerValues : MonoBehaviour {
 	[HideInInspector]
 	public bool SecondaryAttack = false;
 
-	private float HitTimer = 0.0f;
+	[HideInInspector]
+	public bool Hit = false;
 
     //----------EXTRA VARIABLES-----//
 	//-----Gravity Variables
@@ -117,7 +118,7 @@ public class PlayerValues : MonoBehaviour {
 
 		Win.gameObject.SetActive(false);
 
-		//PlayerAnimation = GetComponentInChildren<Animator>();
+		PlayerAnimation = GetComponentInChildren<Animator>();
 		//AnimData = GetComponentInChildren<AnimatorData>();
 	}
 	
@@ -215,7 +216,7 @@ public class PlayerValues : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col)
 	{
-		if (!isBlocking && HitTimer == 0)
+		if (!isBlocking && !Hit)
 		{
             if (col.gameObject.tag == "PrimaryAttack")
             {

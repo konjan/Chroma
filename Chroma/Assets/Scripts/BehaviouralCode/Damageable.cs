@@ -3,10 +3,13 @@ using System.Collections;
 
 public class DamageAble : StateMachineBehaviour {
 
+	PlayerValues Player;
+
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
-	//override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
+	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+	{
+		
+	}
 
 	// OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
 	//override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -29,12 +32,16 @@ public class DamageAble : StateMachineBehaviour {
 	//}
 
 	// OnStateMachineEnter is called when entering a statemachine via its Entry Node
-	//override public void OnStateMachineEnter(Animator animator, int stateMachinePathHash){
-	//
-	//}
+	override public void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
+	{
+		Player = animator.GetComponentInParent<PlayerValues>();
+
+		Player.Hit = true;
+	}
 
 	// OnStateMachineExit is called when exiting a statemachine via its Exit Node
-	//override public void OnStateMachineExit(Animator animator, int stateMachinePathHash) {
-	//
-	//}
+	override public void OnStateMachineExit(Animator animator, int stateMachinePathHash)
+	{
+		Player.Hit = false;
+	}
 }

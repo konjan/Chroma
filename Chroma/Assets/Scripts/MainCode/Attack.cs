@@ -22,12 +22,13 @@ public class Attack : MonoBehaviour
         Player.PrimaryAttack = false;
         Player.isAttacking = false;
 
-		//colliders = anim.CollisionBoxes;
-		//trails = anim.Trails;
+		anim = GetComponentInChildren<AnimatorData>();
+
+		colliders = anim.CollisionBoxes;
+		trails = anim.Trails;
 
         for (int i = 0; i < colliders.Length; i++ )
 			colliders[i].GetComponent<BoxCollider>().enabled = false;
-		//     soulAttack.GetComponent<CollisionSoul>();
 		for (int i = 0; i < trails.Length; i++)
 			trails[i].gameObject.SetActive(false);
     }
