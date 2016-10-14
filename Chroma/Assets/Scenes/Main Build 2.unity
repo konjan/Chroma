@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3170761, g: 0.38749027, b: 0.29862002, a: 1}
+  m_IndirectSpecularColor: {r: 0.317174, g: 0.38743407, b: 0.298666, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -8954,11 +8954,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 350238344}
-  anim: {fileID: 0}
   colliders:
   - {fileID: 0}
-  trails:
-  - {fileID: 0}
+  trails: []
+  PrimaryCombos: []
+  SecondaryCombos: []
+  PrimaryCount: 0
+  SecondaryCount: 0
+  DashTarget: {x: 0, y: 0, z: 0}
   leewayTime: 4.5
   blockTime: 0
 --- !u!114 &350238343
@@ -8995,7 +8998,7 @@ MonoBehaviour:
   m_damage: 5
   Opponent: {fileID: 2060736020}
   m_soulAmount: 0
-  Joystick: 0
+  Joystick: 4
   Targeted: 0
   isGrounded: 0
   DoubleJump: 1
@@ -9093,7 +9096,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 350238339}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.196, z: -22.9}
+  m_LocalPosition: {x: 0, y: 1, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -70235,12 +70238,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 2060736025}
-  anim: {fileID: 0}
   colliders:
   - {fileID: 1631362055}
-  trails:
-  - {fileID: 1631362058}
-  - {fileID: 729875434}
+  trails: []
+  PrimaryCombos: []
+  SecondaryCombos: []
+  PrimaryCount: 0
+  SecondaryCount: 0
+  DashTarget: {x: 0, y: 0, z: 0}
   leewayTime: 4.5
   blockTime: 0
 --- !u!114 &2060736024

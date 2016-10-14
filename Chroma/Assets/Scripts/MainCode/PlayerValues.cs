@@ -27,7 +27,6 @@ public class PlayerValues : MonoBehaviour {
     public ElemTrait Attribute = ElemTrait.UNASPECTED;
 
 	private bool isStunned = false;
-	[HideInInspector]
     public bool isStasis = false;
 	[HideInInspector]
 	public bool isBlocking = false;

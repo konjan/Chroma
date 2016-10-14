@@ -6,13 +6,17 @@ public class Attack : MonoBehaviour
 	public PlayerValues Player;
    // public CollisionSoul soulAttack;
 	public GameObject[] colliders;
-    public TrailRenderer trail;
+    public TrailRenderer[] trails;
 	public string[] PrimaryCombos;
 	public string[] SecondaryCombos;
 	public int PrimaryCount = 0;
 	public int SecondaryCount = 0;
-    public Transform dashDest;
+
+    public Vector3 DashTarget;
+
 	private AnimatorStateInfo CurrentState;
+
+	AnimatorData Anim;
     
 	public float leewayTime = 4.5f;
     public float blockTime;
@@ -27,10 +31,17 @@ public class Attack : MonoBehaviour
         Player.SecondaryAttack = false;
         Player.PrimaryAttack = false;
         Player.isAttacking = false;
+
+		Anim = GetComponentInChildren<AnimatorData>();
+
+		trails = Anim.Trails;
+		colliders = Anim.CollisionBoxes;
+
         for (int i = 0; i < colliders.Length; i++ )
 			colliders[i].GetComponent<BoxCollider>().enabled = false;
    //     soulAttack.GetComponent<CollisionSoul>();
-        trail.gameObject.SetActive(false);
+		foreach(TrailRenderer t in trails)
+			t.gameObject.SetActive(false);
 
         dashTime = 0.6f;
     }
@@ -50,28 +61,30 @@ public class Attack : MonoBehaviour
 	void ActionUpdate()
 	{
         //---- DASH CODE----//
-        if (Input.GetButtonDown(Player.Joystick + "Dash"))
-        {
-            isDashing = true;
-             
-        }
+        if (Input.GetButtonDown(Player.Joystick + "Dash") && !isDashing)
+		{
+			isDashing = true;
+			Player.isStasis = true;
+
+			if (Player.Targeted) // IF lockedOn
+				DashTarget = Player.Opponent.transform.position;
+			else
+				DashTarget = transform.position + transform.forward * 50;
+		}  
         if (isDashing && dashTime >= 0.0f)
-        {
             Dash();
-            dashTime -= Time.deltaTime;
-        }
-
-        if (dashTime <= 0.0f)
-        {
-            isDashing = false;
-            dashTime = 0.6f;
-        }
-
-        
+		else if (dashTime <= 0.0f)
+		{
+			isDashing = false;
+			Player.isStasis = false;
+			dashTime = 0.6f;
+		}
 
 
-        //-----BLOCK CODE-----//
-        if (Player.isGrounded && Input.GetButtonDown(Player.Joystick + "Block"))
+
+
+		//-----BLOCK CODE-----//
+		if (Player.isGrounded && Input.GetButtonDown(Player.Joystick + "Block"))
         {      
             Player.isBlocking = true;
             Player.PlayerAnimation.SetBool("isBlocking", Player.isBlocking);
@@ -103,13 +116,9 @@ public class Attack : MonoBehaviour
                 //Activating the animation trigger
                 Player.PlayerAnimation.SetTrigger("PrimaryTrigger");
             }
-            
-
 
 
             //-----HEAVY ATTACK CODE-----//
-
-
             if (Input.GetButtonDown(Player.Joystick + "Secondary") && Player.PrimaryAttack == false)// punch
             {
                 //Setting Attack bool to true
@@ -119,20 +128,11 @@ public class Attack : MonoBehaviour
                 //Activating the animation trigger
                 Player.PlayerAnimation.SetTrigger("SecondaryTrigger");
             }
-
-
             // --- MOAR DASH--- //
-    
-
         }
         if (!Player.isAttacking)
             CollidersOff();
-
-
-
-
-
-    }
+	}
 
     public void CollidersOn()
     {
@@ -141,14 +141,14 @@ public class Attack : MonoBehaviour
 		{
 			colliders[0].GetComponent<BoxCollider>().enabled = true;
 			colliders[0].tag = "PrimaryAttack";
-            trail.gameObject.SetActive(true);
-        }
+			TrailsSwitch(true);
+		}
 		else if (Player.SecondaryAttack)
 		{
 			colliders[0].GetComponent<BoxCollider>().enabled = true;
 			colliders[0].tag = "SecondaryAttack";
-            trail.gameObject.SetActive(true);
-        }
+			TrailsSwitch(true);
+		}
     }
 
     public void CollidersOff()
@@ -160,31 +160,32 @@ public class Attack : MonoBehaviour
 		Debug.Log("Colliders Off");
 
         colliders[0].GetComponent<BoxCollider>().enabled = false;
-        trail.gameObject.SetActive(false);
+		TrailsSwitch(false);
     }
 
     //---DASH---//
     public void Dash()
     {
-        Vector3 t;
-        
-        float speed = 8.0f;
-        if (Player.Targeted) // IF lockedOn
-            t = Player.Opponent.transform.position;
-        else
-            t = dashDest.transform.position;
+		dashTime -= Time.deltaTime;
+		float speed = 8.0f;
 
+		if (isDashing)
+		{
+			Player.transform.position = Vector3.MoveTowards(Player.transform.position, DashTarget, Time.deltaTime * speed);
 
-        if (isDashing)            
-            Player.transform.position = Vector3.MoveTowards(Player.transform.position, t, Time.deltaTime * speed);
+			//--SLOWING DOWN THE PLAYER, FIXES A BUG--//
+			float dist = Vector3.Distance(Player.transform.position, Player.Opponent.transform.position);
+			if (dist <= 2.0f)
+				speed = 5.0f;
 
-        //--SLOWING DOWN THE PLAYER, FIXES A BUG--//
-        float dist = Vector3.Distance(Player.transform.position, Player.Opponent.transform.position);
-        if (dist <= 2.0f)        
-            speed = 5.0f;
+			if (dist <= 0.1f)
+				speed = 0.0f;
+		}
+	}
 
-        if (dist <= 0.1f)
-            speed = 0.0f;
-           
-    }
+	public void TrailsSwitch(bool Active)
+	{
+		foreach (TrailRenderer t in trails)
+			t.gameObject.SetActive(Active);
+	}
 }
