@@ -55,7 +55,6 @@ public class Attack : MonoBehaviour
     void FixedUpdate()
     {
 		ActionUpdate();
-        Debug.Log(Player.isAttacking);
 	}
 
 	void ActionUpdate()
@@ -130,8 +129,6 @@ public class Attack : MonoBehaviour
             }
             // --- MOAR DASH--- //
         }
-        if (!Player.isAttacking)
-            CollidersOff();
 	}
 
     public void CollidersOn()
