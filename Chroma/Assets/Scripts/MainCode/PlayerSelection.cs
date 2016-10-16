@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerSelection : MonoBehaviour {
 
-	private GameObject[] CharacterList;
+	public GameObject[] CharacterList;
 
 	private int Index = 0;
 
@@ -18,8 +18,9 @@ public class PlayerSelection : MonoBehaviour {
 		CharacterList = new GameObject[transform.childCount];
 
 
-		for (int i = 0; i < transform.childCount; i++)
-			CharacterList[i] = transform.GetChild(i).gameObject;
+        for (int i = 0; i < transform.childCount; i++)
+            CharacterList[i] = transform.GetChild(i).gameObject;
+        
 
 
 		//Set all to off

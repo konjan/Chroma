@@ -9,7 +9,7 @@ public class CursorScript : MonoBehaviour {
 	public bool isSelected = false;
     public Button charButton1;
     public Button charButton2;
-
+    
     // Use this for initialization
     void Start ()
 	{
@@ -30,7 +30,7 @@ public class CursorScript : MonoBehaviour {
         Ray ray = Camera.main.ScreenPointToRay(this.gameObject.transform.position);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
-            Debug.Log("Talk shit get hit");
+            Debug.Log("hit");
 	}
 	 
 	private void ControlCheck()
