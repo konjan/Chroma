@@ -8,28 +8,25 @@ public class MenuScript : MonoBehaviour
 	// Use this for initialization
 	void Start()
     {
-		GameObject MenuDataObject = new GameObject();
-		MenuDataObject.transform.position = Vector3.zero;
+		GameObject MenuDataObject = Instantiate(Resources.Load("MenuData", typeof(GameObject))) as GameObject;
 		MenuDataObject.name = "MenuData";
-		MenuDataObject.AddComponent<MenuData>();
 		md = MenuDataObject.GetComponent<MenuData>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
 	private void LoadLevel(string Level)
 	{
-        Application.LoadLevel("Main Build 2");
+        Application.LoadLevel(Level);
 		//SceneManager.LoadScene(Level, LoadSceneMode.Single);
 	}
 
 	public void SinglePlayer(string Level)
 	{
-		md.Players = new PlayerData[1];
+		//md.Players = new GameObject[1];
 
 		Debug.Log("No SinglePlayer for you.");
 
@@ -37,7 +34,7 @@ public class MenuScript : MonoBehaviour
 	}
 	public void VSMatch(string Level)
 	{
-		md.Players = new PlayerData[2];
+		//md.Players = new GameObject[2];
 
 		LoadLevel(Level);
 	}

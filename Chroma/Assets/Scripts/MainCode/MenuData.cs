@@ -4,15 +4,17 @@ using UnityEngine.SceneManagement;
 
 public struct PlayerData
 {
-	GameObject characterSelected;
-	int skinSelected;
+	public GameObject characterSelected;
+	public int skinSelected;
 }
 public class MenuData : MonoBehaviour {
 
-	public PlayerData[] Players = new PlayerData[1];
-	private GameObject[] CharacterList;
+	public GameObject[] Players = new GameObject[2];
+	public GameObject[] CharacterList = new GameObject[4];
 
-	public string levelSelected = "Main Build 2"; // farting goose
+	private bool allselected = false;
+
+	public string levelSelected = "ForestTemple"; // farting goose
 
 	// Use this for initialization
 	void Start ()
@@ -23,8 +25,23 @@ public class MenuData : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+		foreach (GameObject g in Players)
+		{
+			if (g != null)
+			{
+				allselected = false;
 
-	}
+				break;
+			}
+			else
+				allselected = true;
+		}
+
+		if (Input.GetButtonDown("Start") && allselected)
+		{
+			//load next scene
+		}
+    }
 
     public void OnClick()
     {
