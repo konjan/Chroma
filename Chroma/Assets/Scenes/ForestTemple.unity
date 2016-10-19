@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.317174, g: 0.38743407, b: 0.298666, a: 1}
+  m_IndirectSpecularColor: {r: 0.3170761, g: 0.38749027, b: 0.29862002, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -8916,6 +8916,7 @@ GameObject:
   - 114: {fileID: 350238343}
   - 114: {fileID: 350238342}
   - 65: {fileID: 350238340}
+  - 114: {fileID: 350238341}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player1
@@ -8936,6 +8937,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6553048, y: 1.745573, z: 0.5504376}
   m_Center: {x: 0.0022101402, y: -0.12721348, z: -0.22478104}
+--- !u!114 &350238341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 350238339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17b5eaf1acd33044986e220d7c36ca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projBall: {fileID: 1350773870}
+  Player: {fileID: 350238344}
+  Air: {fileID: 758534966}
+  Earth: {fileID: 1874705703}
+  Water: {fileID: 1133485917}
+  Fire: {fileID: 654580733}
+  projDest: {fileID: 2141616544}
 --- !u!114 &350238342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8973,6 +8992,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 350238344}
   cam: {fileID: 0}
+  fallSpeed: 0
+  DefaultControlLockTime: 1
 --- !u!114 &350238344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70057,6 +70078,7 @@ GameObject:
   - 114: {fileID: 2060736024}
   - 114: {fileID: 2060736023}
   - 65: {fileID: 2060736021}
+  - 114: {fileID: 2060736022}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Player1
@@ -70077,6 +70099,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6553048, y: 1.745573, z: 0.5504376}
   m_Center: {x: 0.0022101402, y: -0.12721348, z: -0.22478104}
+--- !u!114 &2060736022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2060736020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17b5eaf1acd33044986e220d7c36ca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projBall: {fileID: 1513674116}
+  Player: {fileID: 2060736025}
+  Air: {fileID: 1595770718}
+  Earth: {fileID: 247895846}
+  Water: {fileID: 1599305744}
+  Fire: {fileID: 646369716}
+  projDest: {fileID: 1997846383}
 --- !u!114 &2060736023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70114,6 +70154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 2060736025}
   cam: {fileID: 0}
+  fallSpeed: 0
+  DefaultControlLockTime: 1
 --- !u!114 &2060736025
 MonoBehaviour:
   m_ObjectHideFlags: 0

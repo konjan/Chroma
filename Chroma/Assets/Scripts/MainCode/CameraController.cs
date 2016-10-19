@@ -28,6 +28,7 @@ public class CameraController : MonoBehaviour {
 	private Vector3 FreeOffset = new Vector3();
 
 	public Vector3 Sensitivity = new Vector3(4.0f, 3.0f, 1.0f);
+
 	// Use this for initialization
 	void Start ()
     {
@@ -86,7 +87,7 @@ public class CameraController : MonoBehaviour {
 
 		Vector3 dir = TrackedObject.transform.position - FollowedObject.transform.position;
 		dir.y = 0.0f;
-		//dir.Normalize();
+	    //dir.Normalize();
 
 		Quaternion rot = Quaternion.LookRotation(dir);
 
@@ -125,13 +126,16 @@ public class CameraController : MonoBehaviour {
 		float distance = Vector3.Distance(myPosition, theirPosition);
 		Vector3 PlayerDir = theirPosition - myPosition;
         // MIDPOINT CAMERA BYE BYE
-		
-			Midpoint = myPosition + (PlayerDir * (distance * 0.5f));
-			MidpointDirection = ((FollowedObject.transform.position + Midpoint) - transform.position).normalized;
-		
 
+		Midpoint = myPosition + (PlayerDir * (distance * 0.3f));
+       
+
+        Midpoint.y = 0.0f;
+        MidpointDirection = (Midpoint - transform.position).normalized;
+
+       // Debug.Log(MidpointDirection);
 		//Quaternion lookAt = Quaternion.LookRotation(MidpointDirection);
-		//transform.rotation = Quaternion.Slerp(transform.rotation, lookAt, Time.deltaTime * 5.0f);
+		//transform.rotation = Quaternion.RotateTowards(transform.rotation, lookAt, Time.deltaTime * 45.0f);
 		transform.LookAt(Midpoint, Vector3.up);
 	}
 	void FreeView()
