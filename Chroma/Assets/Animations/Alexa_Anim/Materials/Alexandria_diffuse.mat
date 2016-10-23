@@ -40,6 +40,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
+        name: _Diffuse
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
         name: _EmissionMap
       second:
         m_Texture: {fileID: 0}
@@ -75,7 +81,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - first:
+        name: _node_6240
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
+    - first:
+        name: _Bands
+      second: 3
     - first:
         name: _Brightness
       second: 1
@@ -131,11 +146,17 @@ Material:
         name: _OutlineSize
       second: 0.02
     - first:
+        name: _OutlineWidth
+      second: 10
+    - first:
         name: _Parallax
       second: 0.02
     - first:
         name: _RimSize
       second: 3
+    - first:
+        name: _Shadowbrightness
+      second: 0
     - first:
         name: _Shininess
       second: 20
@@ -184,6 +205,9 @@ Material:
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _OutlineColor
+      second: {r: 0, g: 0, b: 0, a: 1}
+    - first:
+        name: _OutlineColour
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _RimColor
