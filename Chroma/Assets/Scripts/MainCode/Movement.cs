@@ -21,8 +21,17 @@ public class Movement : MonoBehaviour
 	private Quaternion desiredDirection;
     private int jumpAmount;
 	float idleSwitch = 0;
-	// Use this for initialization
-	void Start()
+    public float fallSpeed;
+    // Use this for initialization
+
+
+    private Quaternion previousPlayerCameraDirection = Quaternion.identity;
+    private float controlLockTimer;
+    private bool controlLockTimerActive = false;
+
+    public float DefaultControlLockTime = 0.05f;
+
+    void Start()
 	{
 		if (this.name == "Player 1")
 		{
@@ -39,7 +48,8 @@ public class Movement : MonoBehaviour
 
 		Player.isGrounded = true;
         isMoving = false;
-        jumpAmount = 0;
+        //jumpAmount = 0;
+        fallSpeed = -20.0f;
     }
 
 	// Update is called once per frame
@@ -58,8 +68,8 @@ public class Movement : MonoBehaviour
 			if (Input.GetButtonDown(Player.Joystick + "Jump"))
 			{
 				Debug.Log(Player.Joystick + "Jump");
-				//Double Jump code
-				/*
+                //Double Jump code
+                /*
 				if (!Player.isGrounded && Player.DoubleJump && !Player.isAttacking)
 				{
 					//Update to only activate on Normal Jump loop
@@ -71,14 +81,16 @@ public class Movement : MonoBehaviour
 					Player.rb.AddForce(0, 8, 0, ForceMode.Impulse);
 				}
 				*/
-				if (Player.isGrounded == true)
-				{
-					Player.rb.AddForce(0, 8, 0, ForceMode.Impulse);
+                if (Player.isGrounded == true)
+                {
+                    Player.rb.AddForce(0, 8, 0, ForceMode.Impulse);
 
-					Player.isGrounded = false;
-					Player.PlayerAnimation.SetBool("isGrounded", Player.isGrounded);
-					Player.PlayerAnimation.SetTrigger("JumpPressed");
-				}
+                    Player.isGrounded = false;
+                    Player.PlayerAnimation.SetBool("isGrounded", Player.isGrounded);
+                    Player.PlayerAnimation.SetTrigger("JumpPressed");
+                }
+
+             
 			}
 		}
 		else
@@ -88,10 +100,11 @@ public class Movement : MonoBehaviour
 
         if (Player.isGrounded)
             jumpAmount = 0;
-        
 
+        if (Player.transform.position.y >= 4.0)
+            Player.rb.AddForce(0, fallSpeed, 0, ForceMode.Acceleration);
 
-	}
+    }
 
 	void MoveCode()
 	{
@@ -129,11 +142,45 @@ public class Movement : MonoBehaviour
 			desiredDirection = Quaternion.LookRotation(inputDirection, Vector3.up);
 
 			Quaternion CameraDirection = Quaternion.LookRotation(cameraForward, Vector3.up);
-			desiredDirection = CameraDirection * desiredDirection;
+            Quaternion controlRotationModifier = CameraDirection;
+
+            if(controlLockTimerActive)
+            {
+                Debug.Log("hit");
+                controlRotationModifier = previousPlayerCameraDirection;
+                controlLockTimer -= Time.deltaTime;
+                if (controlLockTimer < 0.0f)
+                {
+                    controlLockTimerActive = false;
+                    previousPlayerCameraDirection = Quaternion.identity;
+
+                }
+            }
+            else
+            {
+                if(previousPlayerCameraDirection == Quaternion.identity)
+                {
+                    previousPlayerCameraDirection = CameraDirection;
+                }
+
+                float fDot = Quaternion.Dot(previousPlayerCameraDirection, CameraDirection);
+                if(fDot < 0.8f)
+                {
+                    controlLockTimerActive = true;
+                    controlLockTimer = DefaultControlLockTime;
+                    controlRotationModifier = previousPlayerCameraDirection;
+                }
+                else
+                {
+                    previousPlayerCameraDirection = CameraDirection;
+                }
+            }
+
+            desiredDirection = controlRotationModifier * desiredDirection;
 
 
-			Vector3 forwardOffset = cameraForward * -Input.GetAxis(Player.Joystick + "Vertical") * Player.m_Speed * Time.deltaTime;
-			Vector3 rightOffset = cameraRight * -Input.GetAxis(Player.Joystick + "Horizontal") * Player.m_Speed * Time.deltaTime;
+			Vector3 forwardOffset = controlRotationModifier * new Vector3(0, 0, 1) * -Input.GetAxis(Player.Joystick + "Vertical") * Player.m_Speed * Time.deltaTime;
+			Vector3 rightOffset = controlRotationModifier * new Vector3(-1, 0, 0) * -Input.GetAxis(Player.Joystick + "Horizontal") * Player.m_Speed * Time.deltaTime;
 
 			//-----Move Player in the direction of the joystick input
 			Player.rb.MovePosition(Player.rb.transform.position + forwardOffset + rightOffset);

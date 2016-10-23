@@ -98,7 +98,7 @@ public class PlayerValues : MonoBehaviour {
     public ParticleSystem Air;
 	public ParticleSystem Water;
 	public ParticleSystem Soul;
-    public GameObject pow;
+    public ParticleSystem pow;
     private float powActive = 0.2f;
 	private float changescene = 5;
 
@@ -201,13 +201,13 @@ public class PlayerValues : MonoBehaviour {
                 isStunned = false;
         }
 
-        if(pow.activeSelf == true)
+        if(pow.gameObject.activeSelf == true)
         {
-      
+            pow.Play();
             powActive -= Time.deltaTime;
             if (powActive < 0)
             {
-                pow.SetActive(false);
+                pow.gameObject.SetActive(false);
                 powActive = 0.2f;
             }
         }
@@ -228,7 +228,7 @@ public class PlayerValues : MonoBehaviour {
                 Debug.Log("Colliders Off from hit");
 
 				pow.transform.position = col.transform.position;
-				pow.SetActive(true);
+				pow.gameObject.SetActive(true);
 
 				SoulRaise = true;
 			}
@@ -242,7 +242,8 @@ public class PlayerValues : MonoBehaviour {
                 Debug.Log("Colliders Off from hit");
 
 				pow.transform.position = col.transform.position;
-				pow.SetActive(true);
+				pow.gameObject.SetActive(true);
+                
 
 				SoulRaise = true;
 			}
