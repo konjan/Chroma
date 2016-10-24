@@ -123,8 +123,8 @@ public class PlayerValues : MonoBehaviour {
 		Win.gameObject.SetActive(false);
 
 		PlayerAnimation = GetComponentInChildren<Animator>();
-        clash = GetComponentInChildren<AudioSource>();
-        clashClip = clash.clip;
+      //  clash = GetComponentInChildren<AudioSource>();
+       // clashClip = clash.clip;
 		//AnimData = GetComponentInChildren<AnimatorData>();
 	}
 	
@@ -238,7 +238,7 @@ public class PlayerValues : MonoBehaviour {
 				pow.transform.position = col.transform.position;
 				pow.gameObject.SetActive(true);
 				SoulRaise = true;
-                clash.PlayOneShot(clashClip, 1);
+
 			}
             else if (col.gameObject.tag == "SecondaryAttack")
             {
