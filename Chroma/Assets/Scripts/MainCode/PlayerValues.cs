@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
 
+
 public enum ElemTrait
 {
     FIRE,
@@ -99,7 +100,7 @@ public class PlayerValues : MonoBehaviour {
 	public ParticleSystem Water;
 	public ParticleSystem Soul;
     public ParticleSystem pow;
-    private float powActive = 0.2f;
+    private float powActive = 0.5f;
 	private float changescene = 5;
 
 	private float SoulTime = 0.5f;
@@ -107,6 +108,10 @@ public class PlayerValues : MonoBehaviour {
 
     //-----Stun Timer
     private float staticTime = 0.0f;
+
+    // --- AUDIO THINGS---
+    private AudioSource clash;
+    private AudioClip clashClip;
 
     // Use this for initialization
     void Start ()
@@ -118,6 +123,8 @@ public class PlayerValues : MonoBehaviour {
 		Win.gameObject.SetActive(false);
 
 		PlayerAnimation = GetComponentInChildren<Animator>();
+        clash = GetComponentInChildren<AudioSource>();
+        clashClip = clash.clip;
 		//AnimData = GetComponentInChildren<AnimatorData>();
 	}
 	
@@ -204,12 +211,13 @@ public class PlayerValues : MonoBehaviour {
         if(pow.gameObject.activeSelf == true)
         {
             pow.Play();
-            powActive -= Time.deltaTime;
-            if (powActive < 0)
-            {
-                pow.gameObject.SetActive(false);
-                powActive = 0.2f;
-            }
+       
+           powActive -= Time.deltaTime;
+           if (powActive < 0)
+           {
+               pow.gameObject.SetActive(false);
+               powActive = 0.5f;
+           }
         }
 	}
 
@@ -229,8 +237,8 @@ public class PlayerValues : MonoBehaviour {
 
 				pow.transform.position = col.transform.position;
 				pow.gameObject.SetActive(true);
-
 				SoulRaise = true;
+                clash.PlayOneShot(clashClip, 1);
 			}
             else if (col.gameObject.tag == "SecondaryAttack")
             {
@@ -245,7 +253,7 @@ public class PlayerValues : MonoBehaviour {
 				pow.gameObject.SetActive(true);
                 
 
-				SoulRaise = true;
+                SoulRaise = true;
 			}
 			// if (col.gameObject.tag == "projectile")
 
