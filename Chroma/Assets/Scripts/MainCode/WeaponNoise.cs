@@ -27,10 +27,10 @@ public class WeaponNoise : MonoBehaviour
 	void Update ()
     {
         //--IF MISS PLAY WHOOSH-- there's a slight delay --
-        if (!isColliding && player.PrimaryAttack)
+        if (player.PrimaryAttack)
             WhooshSource.Play();
 
-        if (!isColliding && player.SecondaryAttack)
+        if (player.SecondaryAttack)
             WhooshSource.Play();
 
         if (wepSource.isPlaying)
