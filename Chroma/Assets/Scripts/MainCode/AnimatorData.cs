@@ -6,6 +6,8 @@ public class AnimatorData : MonoBehaviour {
 	public TrailRenderer[] Trails;
 	public GameObject[] CollisionBoxes;
 
+	public Sprite HUDIcon;
+
 	// Use this for initialization
 	void Start () {
 	

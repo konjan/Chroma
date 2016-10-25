@@ -9,8 +9,6 @@ public class PlayerSelection : MonoBehaviour {
 	[HideInInspector]
 	public int Index = 0;
 
-	private bool AxisInUse = false;
-
 	public JoystickNum Joystick = JoystickNum.Keyboard;
 
 	// Use this for initialization

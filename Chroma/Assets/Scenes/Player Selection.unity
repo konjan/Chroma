@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db1db0e398355342b9dab4f35609b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Joystick: 4
+  Joystick: 0
   isSelected: 0
   PlayNum: 1
 --- !u!4 &620776650 stripped
@@ -665,15 +665,15 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1033650470}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -3.82109, y: -1.292654, z: 93.42}
-  m_LocalScale: {x: 1.5284361, y: 1.5284361, z: 1.5284361}
+  m_LocalPosition: {x: -250, y: -60, z: -100}
+  m_LocalScale: {x: 130, y: 130, z: 130}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children:
   - {fileID: 620776650}
   - {fileID: 278590114}
   - {fileID: 1031502076}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 2036765898}
+  m_RootOrder: 7
 --- !u!114 &1033650472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1492,6 +1492,8 @@ RectTransform:
   - {fileID: 527922444}
   - {fileID: 1826589783}
   - {fileID: 694273346}
+  - {fileID: 1033650471}
+  - {fileID: 2054825872}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
@@ -1603,15 +1605,15 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2054825871}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 3.82109, y: -1.292654, z: 98.77725}
-  m_LocalScale: {x: 1.5284361, y: 1.5284361, z: 1.5284361}
+  m_LocalPosition: {x: 250, y: -60, z: -100}
+  m_LocalScale: {x: 130, y: 130, z: 130}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children:
   - {fileID: 1919098286}
   - {fileID: 207993523}
   - {fileID: 227020039}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 2036765898}
+  m_RootOrder: 8
 --- !u!114 &2054825873
 MonoBehaviour:
   m_ObjectHideFlags: 0

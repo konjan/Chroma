@@ -33,7 +33,7 @@ public class PlayerValues : MonoBehaviour {
 	[HideInInspector]
     public float m_damage = 5.0f;
 	//Opponent Variable
-	public GameObject Opponent;
+	public PlayerValues Opponent;
 
     //-----SOUL VARIABLES-----//
 	[HideInInspector]
@@ -51,17 +51,15 @@ public class PlayerValues : MonoBehaviour {
     public bool isGrounded;
     //-----DoubleJump variable used in determining how many jumps have been used up
     //-----True if Player HAS NOT used up their double jump
-    public bool DoubleJump = true;
+    //public bool DoubleJump = true;
 
-    //-----Speed variable, 5 roughly matches the speed ad which the animations play
+    //-----Speed variable, 5 roughly matches the speed at which the animations play
     //-----Characters skate if variable is higher
     [HideInInspector]
     public float m_Speed = 5;
 
     //-----Access to the animator, used for all animations
 	public Animator PlayerAnimation = new Animator();
-	//public AnimatorData AnimData;
-
 
     //----------ATTACK VARIABLES-----//
 
@@ -86,19 +84,17 @@ public class PlayerValues : MonoBehaviour {
 	[HideInInspector]
     public float TurnSpeed = 780.0f;
 
-    //-----UI pieces
-  
-    public Image KOText;
-	public Text Win;
-    public Slider PlayerSlider;
-    public Slider SoulSlider;
+	//-----UI pieces
+
+	public GameManager GM;
+	public int GMInt;
     public bool isKO;
     public ParticleSystem Fire;
     public ParticleSystem Earth;
     public ParticleSystem Air;
 	public ParticleSystem Water;
 	public ParticleSystem Soul;
-    public ParticleSystem pow;
+    //public ParticleSystem pow;
     private float powActive = 0.2f;
 	private float changescene = 5;
 
@@ -112,53 +108,53 @@ public class PlayerValues : MonoBehaviour {
     void Start ()
     {
 		m_Health = MAX_HEALTH;
-        SoulSlider.maxValue = 100;
-        PlayerSlider.value = m_Health;
 
-		Win.gameObject.SetActive(false);
+		GM = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-		PlayerAnimation = GetComponentInChildren<Animator>();
-		//AnimData = GetComponentInChildren<AnimatorData>();
+        GM.SoulSliders[GMInt].maxValue = 100;
+	}
+
+	void Update()
+	{
+		if(PlayerAnimation == null)
+			PlayerAnimation = GetComponentInChildren<Animator>();
+		if(Opponent == null)
+		{
+			if(this.name == "Player 1")
+				Opponent = GameObject.Find("Player 2").GetComponent<PlayerValues>();
+			else if(this.name == "Player 2")
+				Opponent = GameObject.Find("Player 1").GetComponent<PlayerValues>();
+		}
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate ()
     {
         rb.AddForce(Physics.gravity * gravityEdit * rb.mass);
-       
-		PlayerSlider.value = m_Health;
-		SoulSlider.value = m_soulAmount;
 
-		Check(Attribute, Opponent.GetComponent<PlayerValues>().Attribute);
+		GM.PlayerSliders[GMInt].value = m_Health;
+		GM.SoulSliders[GMInt].value = m_soulAmount;
 
-		if (isKO == true)
-		{
-			Win.text = tag.ToString();
-			Win.gameObject.SetActive(true);
-		}
+		//Check(Attribute, Opponent.GetComponent<PlayerValues>().Attribute);
 
 		if (m_Health <= 0)
         {
-            KOText.gameObject.SetActive(true);
-            isKO = true;
-            //Time.timeScale = 0;
+            GM.KOText.gameObject.SetActive(true);
+			GM.Win.text = tag.ToString();
+			GM.Win.gameObject.SetActive(true);
 
 			changescene -= Time.deltaTime;
 
 			if(changescene <= 0)
 			{
-				Application.LoadLevel("ResetMenu");
+				Application.LoadLevel("Main Menu");
 			}
-            // death or KO
-            //play.gameObject.SetActive(true);
-            m_Health = 0;
         }
 
 		if (SoulRaise == true)
 		{
 			SoulTime -= Time.deltaTime;
-			Opponent.GetComponent<PlayerValues>().m_soulAmount += 25.0f * Time.deltaTime;
-            GetComponent<PlayerValues>().m_Health -= GetComponent<PlayerValues>().m_damage * Time.deltaTime;
+			Opponent.m_soulAmount += 25.0f * Time.deltaTime;
 			if (SoulTime < 0)
 			{
 				SoulRaise = false;
@@ -166,24 +162,22 @@ public class PlayerValues : MonoBehaviour {
 			}
 		}
 
-		//------TESTING, DOES WORK ------
-
-		if (m_soulAmount > 100)
-        {
-            m_soulAmount = 100;
-        }
-        //-----INPUT FOR ELEMENTS-------
 
         if (m_soulAmount > 33.3f)
         {
             ChangeElement();
 
-        }
+			if (m_soulAmount > 100)
+			{
+				m_soulAmount = 100;
+			}
+		}
 
         if (Attribute != ElemTrait.UNASPECTED)
         {
             timeThing -= Time.deltaTime;        
         }
+
         if (timeThing <= 0.0f)
         {
             Attribute = ElemTrait.UNASPECTED;
@@ -201,16 +195,16 @@ public class PlayerValues : MonoBehaviour {
                 isStunned = false;
         }
 
-        if(pow.gameObject.activeSelf == true)
-        {
-            pow.Play();
-            powActive -= Time.deltaTime;
-            if (powActive < 0)
-            {
-                pow.gameObject.SetActive(false);
-                powActive = 0.2f;
-            }
-        }
+        //if(pow.gameObject.activeSelf == true)
+        //{
+        //    pow.Play();
+        //    powActive -= Time.deltaTime;
+        //    if (powActive < 0)
+        //    {
+        //        pow.gameObject.SetActive(false);
+        //        powActive = 0.2f;
+        //    }
+        //}
 	}
 
 	void OnTriggerEnter(Collider col)
@@ -219,32 +213,20 @@ public class PlayerValues : MonoBehaviour {
 		{
             if (col.gameObject.tag == "PrimaryAttack")
             {
-                m_damage = 2.0f;
-                m_Health -= m_damage;
-                isAttacking = true;
-
-                //col.enabled = false;
+				m_Health -= Opponent.m_damage;
+				isAttacking = true;
                 PlayerAnimation.SetTrigger("TempHit");
-                Debug.Log("Colliders Off from hit");
-
-				pow.transform.position = col.transform.position;
-				pow.gameObject.SetActive(true);
-
+				//pow.transform.position = col.transform.position;
+				//pow.gameObject.SetActive(true);
 				SoulRaise = true;
 			}
             else if (col.gameObject.tag == "SecondaryAttack")
             {
-                m_damage = 5.0f;
-                m_Health -= m_damage;
-                isAttacking = true;
-                //col.enabled = false;
+				m_Health -= Opponent.m_damage;
+				isAttacking = true;
                 PlayerAnimation.SetTrigger("TempHit");
-                Debug.Log("Colliders Off from hit");
-
-				pow.transform.position = col.transform.position;
-				pow.gameObject.SetActive(true);
-                
-
+				//pow.transform.position = col.transform.position;
+				//pow.gameObject.SetActive(true);
 				SoulRaise = true;
 			}
 			// if (col.gameObject.tag == "projectile")

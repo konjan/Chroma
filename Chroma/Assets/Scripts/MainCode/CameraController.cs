@@ -11,9 +11,6 @@ public class CameraController : MonoBehaviour {
 	private float yOffsetMax = 18;
 	private float yOffsetMin = -0.5f;
 
-	private float yOffset = 9;
-	private float xOffset = -7;
-
     float freeViewX = 0.0f;
     float freeViewY = 0.0f;
     Vector3 direction = new Vector3(0, 0, -5);
@@ -24,37 +21,35 @@ public class CameraController : MonoBehaviour {
 	private Transform CameraPivot;
 
 	public Vector3 CameraOffset = new Vector3();
-	private Vector3 TargetOffset = new Vector3();
-	private Vector3 FreeOffset = new Vector3();
 
 	public Vector3 Sensitivity = new Vector3(4.0f, 3.0f, 1.0f);
 
 	// Use this for initialization
 	void Start ()
     {
-		if(this.name == "Main Camera")
-		{
-			FollowedObject = GameObject.Find("Player 1");
-			TrackedObject = GameObject.Find("Player 2");
-		}
-		else if(this.name == "Camera")
-		{
-			FollowedObject = GameObject.Find("Player 2");
-			TrackedObject = GameObject.Find("Player 1");
-		}
-
 		CameraPivot = transform.parent;
-		UpdatePivotRotation();
-
-		transform.position = FollowedObject.transform.forward.normalized + direction;
-
-		Player = FollowedObject.GetComponent<PlayerValues>();
 	}
 
 	void Update()
 	{
-     
-   
+		if(FollowedObject == null || TrackedObject == null)
+		{
+			if (this.name == "Main Camera")
+			{
+				FollowedObject = GameObject.Find("Player 1");
+				TrackedObject = GameObject.Find("Player 2");
+			}
+			else if (this.name == "Camera")
+			{
+				FollowedObject = GameObject.Find("Player 2");
+				TrackedObject = GameObject.Find("Player 1");
+			}
+			UpdatePivotRotation();
+
+			transform.position = FollowedObject.transform.forward.normalized + direction;
+
+			Player = FollowedObject.GetComponent<PlayerValues>();
+		}
     }
 
 	// Update is called once per frame
@@ -121,7 +116,6 @@ public class CameraController : MonoBehaviour {
 		Vector3 theirPosition = TrackedObject.transform.position;
 
 		Vector3 Midpoint = new Vector3();
-		Vector3 MidpointDirection = new Vector3();
 
 		float distance = Vector3.Distance(myPosition, theirPosition);
 		Vector3 PlayerDir = theirPosition - myPosition;
@@ -131,7 +125,6 @@ public class CameraController : MonoBehaviour {
        
 
         Midpoint.y = 0.0f;
-        MidpointDirection = (Midpoint - transform.position).normalized;
 
        // Debug.Log(MidpointDirection);
 		//Quaternion lookAt = Quaternion.LookRotation(MidpointDirection);

@@ -17,9 +17,14 @@ public class Movement : MonoBehaviour
 
 	public Camera cam;
 
+	public AnimationCurve speedCurve;
+	public float accerateTime = 1.0f;
+
+	private float speedModifier = 0.1f;
+	private Vector3 previousDirection = Vector3.zero;
+	private float currentAccelerateTime = 0.0f;
     private bool isMoving;
 	private Quaternion desiredDirection;
-    private int jumpAmount;
 	float idleSwitch = 0;
     public float fallSpeed;
     // Use this for initialization
@@ -67,7 +72,6 @@ public class Movement : MonoBehaviour
 
 			if (Input.GetButtonDown(Player.Joystick + "Jump"))
 			{
-				Debug.Log(Player.Joystick + "Jump");
                 //Double Jump code
                 /*
 				if (!Player.isGrounded && Player.DoubleJump && !Player.isAttacking)
@@ -94,16 +98,7 @@ public class Movement : MonoBehaviour
 			}
 		}
 		else
-		{
 			transform.position = transform.position;
-		}
-
-        if (Player.isGrounded)
-            jumpAmount = 0;
-
-        if (Player.transform.position.y >= 4.0)
-            Player.rb.AddForce(0, fallSpeed, 0, ForceMode.Acceleration);
-
     }
 
 	void MoveCode()
@@ -132,7 +127,6 @@ public class Movement : MonoBehaviour
 
 		Vector3 cameraForward = cam.transform.forward;
 		cameraForward.y = 0.0f; cameraForward.Normalize();
-		Vector3 cameraRight = Vector3.Cross(cameraForward, Vector3.up);
 
 		Vector3 inputDirection = new Vector3(Input.GetAxis(Player.Joystick + "Horizontal"), 0, -Input.GetAxis(Player.Joystick + "Vertical"));
 
@@ -183,13 +177,31 @@ public class Movement : MonoBehaviour
 			Vector3 rightOffset = controlRotationModifier * new Vector3(-1, 0, 0) * -Input.GetAxis(Player.Joystick + "Horizontal") * Player.m_Speed * Time.deltaTime;
 
 			//-----Move Player in the direction of the joystick input
-			Player.rb.MovePosition(Player.rb.transform.position + forwardOffset + rightOffset);
+			Vector3 moveDir = forwardOffset + rightOffset;
+			moveDir.Normalize();
+
+			float dot = Vector3.Dot(moveDir, previousDirection);
+			previousDirection = moveDir;
+
+			if(dot > 0.7f)
+			{
+				currentAccelerateTime += Time.deltaTime;
+				float alpha = currentAccelerateTime / accerateTime;
+
+				speedModifier = speedCurve.Evaluate(alpha);
+			}
+			else
+			{
+				currentAccelerateTime = 0.0f;
+			}
+
+			Player.rb.MovePosition(Player.rb.transform.position + (forwardOffset + rightOffset) * speedModifier);
 
 			//-----Rotate Player towards desired Joystick direction
 			Player.rb.transform.rotation = Quaternion.RotateTowards(Player.rb.transform.rotation, desiredDirection, Player.TurnSpeed * Time.deltaTime);
 		}
 
-		////-----Force Player to look at opponent if Targeted
+		//-----Force Player to look at opponent if Targeted
 		if (Player.Targeted)
 			Player.rb.transform.LookAt(new Vector3(Player.Opponent.transform.position.x, transform.position.y, Player.Opponent.transform.position.z));
 
@@ -200,11 +212,6 @@ public class Movement : MonoBehaviour
 
 			Player.PlayerAnimation.SetTrigger("FallTrigger");
 		}
-
-        if(Player.Joystick == JoystickNum.AI)
-        {
-            isMoving = true;
-        }
 	}
 
 	void OnCollisionEnter(Collision col)

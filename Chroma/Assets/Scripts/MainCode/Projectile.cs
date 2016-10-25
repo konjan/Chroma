@@ -4,7 +4,6 @@ using System.Collections;
 public class Projectile : MonoBehaviour 
 {
     public GameObject projBall;
-    private Collider projCollider;
     public PlayerValues Player;
     public GameObject Air;
     public GameObject Earth;
@@ -17,7 +16,6 @@ public class Projectile : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        projCollider = projBall.GetComponentInParent<Collider>();
         m_speed = 2.5f;
         projBall.SetActive(false);    
     }

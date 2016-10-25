@@ -24,8 +24,16 @@ public class CursorScript : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
-		if(md == null)
+		if (md == null)
+		{
 			md = GameObject.Find("MenuData").GetComponent<MenuData>();
+
+			if (Joystick == JoystickNum.Joystick1)
+				md.cs1 = this;
+			else
+				md.cs2 = this;
+			
+		}
 
 		ControlCheck();
     }

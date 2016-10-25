@@ -18,13 +18,22 @@ public class GameManager : MonoBehaviour {
 	public Camera MainCamera;
 	public Camera Player2Camera;
 
-	private PlayerValues Player1;
-	private PlayerValues Player2;
+	public MenuData md;
+
+	public Vector3[] PlayerSpawn;
 
 	//-----Timer Variables-----//
 	private float Timer;
 	public Text TimeText;
 	public float maxTime;
+
+	//-----Canvas Variables-----//
+
+	public Image KOText;
+	public Text Win;
+	public Slider[] PlayerSliders;
+	public Slider[] SoulSliders;
+
 
 	private CursorLockMode lockMode;
 	// Use this for initialization
@@ -35,14 +44,20 @@ public class GameManager : MonoBehaviour {
 		MainCamera = GameObject.Find("Camera Pivot").GetComponentInChildren<Camera>();
 		Player2Camera = GameObject.Find("Camera 2 Pivot").GetComponentInChildren<Camera>();
 
-		Player1 = GameObject.Find("Player 1").GetComponent<PlayerValues>();
-		Player2 = GameObject.Find("Player 2").GetComponent<PlayerValues>();
-
 		Timer = maxTime;
+
+		Win.gameObject.SetActive(false);
 	}
-	
+
 	void Update()
 	{
+		if (md == null)
+		{
+			md = GameObject.Find("MenuData").GetComponent<MenuData>();
+
+			SceneSetup();
+		}
+
 		//-----Cast to int to get rounded timer
 		//-----Cast to string to show on Canvas
 		int timer = (int)Timer;
@@ -55,11 +70,6 @@ public class GameManager : MonoBehaviour {
 		if (Timer < 0)
 			Timer = 0;
 
-
-	}
-	// Update is called once per frame
-	void FixedUpdate ()
-	{
 		//-----Swaps Cursor free on Keyboard
 		if (Input.GetKeyDown(KeyCode.Z))
 		{
@@ -69,7 +79,7 @@ public class GameManager : MonoBehaviour {
 		}
 
 		//----Swaps Player mode -- Also changes screen view if necessary-----//
-		if(Input.GetKeyDown(KeyCode.P))
+		if (Input.GetKeyDown(KeyCode.P))
 		{
 			if (Mode == GameMode.SinglePlayer)
 				Mode = GameMode.MultiPlayer;
@@ -107,6 +117,24 @@ public class GameManager : MonoBehaviour {
 			//Updates Player screens to show 2 Players
 			MainCamera.rect = new Rect(0, 0, 0.5f, 1);
 			Player2Camera.rect = new Rect(0.5f, 0, 0.5f, 1);
+		}
+	}
+
+	private void SceneSetup()
+	{
+		for (int i = 1; i <= 2; i++)
+		{
+			GameObject PlayerObject = Instantiate(Resources.Load("Player", typeof(GameObject))) as GameObject;
+			PlayerObject.name = "Player " + i;
+			PlayerObject.transform.position = PlayerSpawn[i - 1];
+
+			GameObject Character = Instantiate(Resources.Load(md.Players[i - 1].name, typeof(GameObject))) as GameObject;
+			Character.transform.parent = PlayerObject.transform;
+			Character.transform.localPosition = new Vector3(0, -1, 0);
+
+			PlayerValues temp = PlayerObject.GetComponent<PlayerValues>();
+			temp.GMInt = i - 1;
+			GameObject.Find(PlayerObject.name + " Icon").GetComponent<Image>().sprite = Character.GetComponent<AnimatorData>().HUDIcon;
 		}
 	}
 }

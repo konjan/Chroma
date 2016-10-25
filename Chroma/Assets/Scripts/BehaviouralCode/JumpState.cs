@@ -39,6 +39,6 @@ public class JumpState : StateMachineBehaviour {
         PlayerValues Player = animator.GetComponentInParent<PlayerValues>();
 
         Player.isGrounded = true;
-        Player.DoubleJump = true;
+        //Player.DoubleJump = true;
     }
 }

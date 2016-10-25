@@ -12,7 +12,8 @@ public class MenuData : MonoBehaviour {
 	public GameObject[] Players = new GameObject[2];
 	public GameObject[] CharacterList = new GameObject[4];
 
-	private bool allselected = false;
+	public CursorScript cs1;
+	public CursorScript cs2;
 
 	public string levelSelected = "ForestTemple"; // farting goose
 
@@ -20,27 +21,18 @@ public class MenuData : MonoBehaviour {
 	void Start ()
 	{
 		DontDestroyOnLoad(this);
+
+		for(int i = 0; i < Players.Length; i++)
+		{
+			Players[i] = null;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		foreach (GameObject g in Players)
-		{
-			if (g != null)
-			{
-				allselected = false;
-
-				break;
-			}
-			else
-				allselected = true;
-		}
-
-		if (Input.GetButtonDown("Start") && allselected)
-		{
-			//load next scene
-		}
+		if (Input.GetButtonDown("Start") && (cs1.isSelected && cs2.isSelected))
+			Application.LoadLevel(levelSelected);
     }
 
     public void OnClick()
