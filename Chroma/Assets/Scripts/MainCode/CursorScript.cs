@@ -28,7 +28,7 @@ public class CursorScript : MonoBehaviour {
 		{
 			md = GameObject.Find("MenuData").GetComponent<MenuData>();
 
-			if (Joystick == JoystickNum.Joystick1)
+			if (PlayNum == 1)
 				md.cs1 = this;
 			else
 				md.cs2 = this;

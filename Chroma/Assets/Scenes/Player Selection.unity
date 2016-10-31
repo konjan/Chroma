@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db1db0e398355342b9dab4f35609b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Joystick: 1
+  Joystick: 4
   isSelected: 0
   PlayNum: 2
 --- !u!23 &527922447
@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db1db0e398355342b9dab4f35609b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Joystick: 0
+  Joystick: 4
   isSelected: 0
   PlayNum: 1
 --- !u!4 &620776650 stripped
