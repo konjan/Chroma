@@ -94,7 +94,7 @@ public class PlayerValues : MonoBehaviour {
     public ParticleSystem Air;
 	public ParticleSystem Water;
 	public ParticleSystem Soul;
-    //public ParticleSystem pow;
+    public ParticleSystem pow;
     private float powActive = 0.2f;
 	private float changescene = 5;
 
@@ -110,8 +110,8 @@ public class PlayerValues : MonoBehaviour {
 		m_Health = MAX_HEALTH;
 
 		GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-
         GM.SoulSliders[GMInt].maxValue = 100;
+        pow.gameObject.SetActive(false);
 	}
 
 	void Update()
@@ -195,16 +195,18 @@ public class PlayerValues : MonoBehaviour {
                 isStunned = false;
         }
 
-        //if(pow.gameObject.activeSelf == true)
-        //{
-        //    pow.Play();
-        //    powActive -= Time.deltaTime;
-        //    if (powActive < 0)
-        //    {
-        //        pow.gameObject.SetActive(false);
-        //        powActive = 0.2f;
-        //    }
-        //}
+       // pow.Play();
+
+        if (pow.gameObject.activeSelf == true)
+        {
+            pow.Play();
+            powActive -= Time.deltaTime;
+            if (powActive < 0)
+            {
+                pow.gameObject.SetActive(false);
+                powActive = 0.2f;
+            }
+        }
 	}
 
 	void OnTriggerEnter(Collider col)
@@ -216,8 +218,9 @@ public class PlayerValues : MonoBehaviour {
 				m_Health -= Opponent.m_damage;
 				isAttacking = true;
                 PlayerAnimation.SetTrigger("TempHit");
-				//pow.transform.position = col.transform.position;
-				//pow.gameObject.SetActive(true);
+                pow.gameObject.SetActive(true);
+                pow.transform.position = col.transform.position;			
+                //pow.Play();
 				SoulRaise = true;
 			}
             else if (col.gameObject.tag == "SecondaryAttack")
@@ -225,22 +228,24 @@ public class PlayerValues : MonoBehaviour {
 				m_Health -= Opponent.m_damage;
 				isAttacking = true;
                 PlayerAnimation.SetTrigger("TempHit");
-				//pow.transform.position = col.transform.position;
-				//pow.gameObject.SetActive(true);
+                pow.gameObject.SetActive(true);
+                pow.transform.position = col.transform.position;				
+               // pow.Play();
 				SoulRaise = true;
 			}
-			// if (col.gameObject.tag == "projectile")
 
 		}
 	}
 
     void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.tag == "Ground")
+        if (col.gameObject.tag == "Ground")
         {
             PlayerAnimation.SetBool("isGrounded", true);
             isGrounded = true;
         }
+        if (col.gameObject.tag == "projectile")
+            m_Health -= col.gameObject.GetComponent<Projectile>().ProjectileDamage * Opponent.m_damage;
     }
 
 

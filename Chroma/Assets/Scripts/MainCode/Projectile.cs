@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
     public GameObject projDest;
     private Vector3 getPos;
     private float m_speed;
+    public float ProjectileDamage = 0.3f;
     // Use this for initialization
     void Start ()
     {
