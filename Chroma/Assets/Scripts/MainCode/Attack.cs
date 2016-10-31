@@ -60,8 +60,9 @@ public class Attack : MonoBehaviour
 	void ActionUpdate()
 	{
         //---- DASH CODE----//
-        if (Input.GetButtonDown(Player.Joystick + "Dash") && !isDashing)
+        if (Input.GetButtonDown(Player.Joystick + "Dash") && !isDashing && !Player.isAttacking)
 		{
+			Player.PlayerAnimation.SetTrigger("Dash");
 			isDashing = true;
 			Player.isStasis = true;
 

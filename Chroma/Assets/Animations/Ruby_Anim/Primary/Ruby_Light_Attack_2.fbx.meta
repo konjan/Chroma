@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 25242285db380234ca391ca819507820
-timeCreated: 1473057631
+timeCreated: 1477873100
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
@@ -226,6 +226,7 @@ ModelImporter:
     400216: rubysword:Upper_Sword_JNT_4
     400218: rubysword:Upper_Sword_JNT_5
     7400000: Light_Attack_2
+    7400002: Light_Attack_two
     9500000: //RootNode
   materials:
     importMaterials: 1

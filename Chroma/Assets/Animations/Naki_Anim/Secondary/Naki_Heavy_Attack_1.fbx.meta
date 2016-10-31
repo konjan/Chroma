@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: 1154a124339201247a6db17591bbbbc0
-timeCreated: 1476074868
-licenseType: Free
+guid: 556de4de159ddd8459546c097e12a6c4
+timeCreated: 1477894653
+licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -209,7 +209,7 @@ ModelImporter:
     400198: Right_Skirt_JNT_3
     400200: Right_Skirt_JNT_4
     400202: Right_Upper_Body_Sqush_JNT
-    7400000: Heavy_Attack_1
+    7400000: Heavy_Attack_3
     9500000: //RootNode
   materials:
     importMaterials: 1

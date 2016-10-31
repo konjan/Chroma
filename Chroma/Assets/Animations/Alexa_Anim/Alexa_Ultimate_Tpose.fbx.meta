@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: de6587e298c38494c8a6000ac3aa24c7
-timeCreated: 1476079927
-licenseType: Free
+timeCreated: 1477887175
+licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -150,6 +150,7 @@ ModelImporter:
     100284: Whip:Right_Whip_JNT_7
     100286: Whip:Right_Whip_JNT_8
     100288: Whip:Right_Whip_JNT_9
+    100290: Whip:Right_Hand_Whip
     400000: Alexa_Body
     400002: Alexa_Dress
     400004: Alexa_Hair
@@ -295,17 +296,20 @@ ModelImporter:
     400284: Whip:Right_Whip_JNT_7
     400286: Whip:Right_Whip_JNT_8
     400288: Whip:Right_Whip_JNT_9
+    400290: Whip:Right_Hand_Whip
     4300000: Alexa_Body
     4300002: Alexa_Hair
     4300004: Alexa_Hood
     4300006: Alexa_Dress
     4300008: Alexa_Stuff
+    4300010: Whip:Right_Hand_Whip
     9500000: //RootNode
     13700000: Alexa_Body
     13700002: Alexa_Dress
     13700004: Alexa_Hair
     13700006: Alexa_Hood
     13700008: Alexa_Stuff
+    13700010: Whip:Right_Hand_Whip
   materials:
     importMaterials: 1
     materialName: 0
