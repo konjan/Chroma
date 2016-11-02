@@ -31,8 +31,9 @@ public class PlayerSelection : MonoBehaviour {
 
 	public void AllOff()
 	{
-		foreach (GameObject g in CharacterList)
-			g.SetActive(false);
+        foreach (GameObject g in CharacterList)
+            g.SetActive(false);
+        Debug.Log("dicks");
 	}
 
 	public void TurnOn(int i)

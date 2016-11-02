@@ -61,9 +61,9 @@ public class CursorScript : MonoBehaviour {
 				//Searches for the character name and assigns it to the player object
 				for(int i = 0; i < md.CharacterList.Length; i++)
 				{
-					//if the object shares the name of one of the characters, assign it to the object, then exit loop.
-					if(md.CharacterList[i].name == characterName)
-					{
+                    //if the object shares the name of one of the characters, assign it to the object, then exit loop.
+                    if (md.CharacterList[i].name == characterName)
+                    {
 						md.Players[PlayNum - 1] = md.CharacterList[i];
 						CharacterObject.TurnOn(i);
 
