@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour 
 {
-	private PlayerValues Player;
-    private PlayerValues Target;
+	public PlayerValues Player;
+    public PlayerValues Target;
     private float m_speed;
     public float ProjectileDamage = 8;
 
@@ -14,12 +14,12 @@ public class Projectile : MonoBehaviour
 
 	public SphereCollider sc;
 	public ParticleSystem Impact;
-	public ParticleSystem Orb;
+	public GameObject Orb;
     // Use this for initialization
     void Start ()
     {
 		sc = this.GetComponent<SphereCollider>();
-        m_speed = 2.5f;
+        m_speed = 5.0f;
     }
 
 	// Update is called once per frame
@@ -28,42 +28,43 @@ public class Projectile : MonoBehaviour
 		if (Impact.isPlaying == true)
 			active = false;
 		else if (active == false && Impact.isPlaying == false)
-			this.gameObject.SetActive(false);
+			GameObject.Destroy(this.gameObject);
 
-		this.transform.position = Vector3.Lerp(this.transform.position, Target.transform.position, Time.deltaTime * m_speed);
+		this.transform.position = Vector3.MoveTowards(this.transform.position, Target.transform.position, Time.deltaTime * m_speed);
 		timer -= Time.deltaTime;
 		if(timer <= 0)
 		{
 			timer = 0;
-			this.gameObject.SetActive(false);
+			GameObject.Destroy(this.gameObject);
 		}
 	}
     void OnCollisionEnter(Collision col)
     {
-		Orb.Stop();
-		Impact.Play();
+		Orb.SetActive(false);
+		Impact.Play(true);
 
 		if (col.gameObject == Target.gameObject)
         {
-			Target.m_Health -= ProjectileDamage;
-
 			sc.enabled = false;
+
+			Target.m_Health -= ProjectileDamage;
 		}
 		else
 		{
-			this.gameObject.SetActive(false);
+			GameObject.Destroy(this.gameObject);
 		}
     }
 
 	public void Startup(PlayerValues p, PlayerValues t)
 	{
 		active = true;
+		Orb.SetActive(true);
 		timer = 5.0f;
 
 		Player = p;
-		Target = p;
+		Target = t;
 
-		transform.position = Player.transform.position;
+		transform.position = Player.transform.position + new Vector3(0, 0.5f, 1);
 		sc.enabled = true;
 	}
 }
