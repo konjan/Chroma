@@ -80,8 +80,11 @@ public class Attack : MonoBehaviour
 			dashTime = 0.6f;
 		}
 
-
-
+		if(Input.GetButtonDown(Player.Joystick + "Projectile"))
+		{
+			GameObject Proj = Instantiate(Resources.Load("Projectile") as GameObject);
+			Proj.GetComponent<Projectile>().Startup(Player, Player.Opponent);
+		}
 
 		//-----BLOCK CODE-----//
 		if (Player.isGrounded && Input.GetButtonDown(Player.Joystick + "Block"))

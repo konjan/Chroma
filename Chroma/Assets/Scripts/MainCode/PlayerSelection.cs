@@ -33,7 +33,6 @@ public class PlayerSelection : MonoBehaviour {
 	{
         foreach (GameObject g in CharacterList)
             g.SetActive(false);
-        Debug.Log("dicks");
 	}
 
 	public void TurnOn(int i)
