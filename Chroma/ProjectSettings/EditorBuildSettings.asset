@@ -11,5 +11,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Player Selection.unity
   - enabled: 1
     path: Assets/Scenes/ForestTemple.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ResetMenu.unity
