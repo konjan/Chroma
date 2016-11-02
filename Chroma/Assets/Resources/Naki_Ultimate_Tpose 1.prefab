@@ -2565,7 +2565,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011760399324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.8106055, y: 6.6036e-17, z: -3.5687966}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -3059,10 +3059,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Trails:
-  - {fileID: 96000012496729412, guid: 75e24b6b2e11ba9489432c1d1c9d9476, type: 2}
-  - {fileID: 96000012464374522, guid: 75e24b6b2e11ba9489432c1d1c9d9476, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   CollisionBoxes:
-  - {fileID: 1000010934731398, guid: 75e24b6b2e11ba9489432c1d1c9d9476, type: 2}
+  - {fileID: 0}
   HUDIcon: {fileID: 21300000, guid: bd3fdaa62a633bb429f9cd79d148ca81, type: 3}
 --- !u!137 &137000010484927534
 SkinnedMeshRenderer:
