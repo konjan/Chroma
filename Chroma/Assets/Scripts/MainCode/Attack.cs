@@ -80,9 +80,10 @@ public class Attack : MonoBehaviour
 			dashTime = 0.6f;
 		}
 
-		if(Input.GetButtonDown(Player.Joystick + "Projectile"))
+		if(Input.GetButtonDown(Player.Joystick + "Projectile") && !Player.ProjectileActive)
 		{
-			GameObject Proj = Instantiate(Resources.Load("Projectile") as GameObject);
+			Player.ProjectileActive = true;
+			GameObject Proj = Instantiate(Resources.Load("Projectile"), transform.position + (transform.forward * 2), transform.rotation)  as GameObject;
 			Proj.GetComponent<Projectile>().Startup(Player, Player.Opponent);
 		}
 

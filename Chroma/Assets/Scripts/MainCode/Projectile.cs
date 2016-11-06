@@ -15,6 +15,7 @@ public class Projectile : MonoBehaviour
 	public SphereCollider sc;
 	public ParticleSystem Impact;
 	public GameObject Orb;
+	private bool isTargeted;
     // Use this for initialization
     void Start ()
     {
@@ -28,15 +29,19 @@ public class Projectile : MonoBehaviour
 		if (Impact.isPlaying == true)
 			active = false;
 		else if (active == false && Impact.isPlaying == false)
-			GameObject.Destroy(this.gameObject);
+			ProjectileExplode();
 
-		this.transform.position = Vector3.MoveTowards(this.transform.position, Target.transform.position, Time.deltaTime * m_speed);
+		//if (isTargeted)
+		//	this.transform.position = Vector3.MoveTowards(this.transform.position, Target.transform.position, Time.deltaTime * m_speed);
+		//else
+		transform.position += transform.forward * (Time.deltaTime * m_speed);
+
 		timer -= Time.deltaTime;
 		if(timer <= 0)
 		{
 			timer = 0;
-			GameObject.Destroy(this.gameObject);
-		}
+			ProjectileExplode();
+        }
 	}
     void OnCollisionEnter(Collision col)
     {
@@ -51,7 +56,7 @@ public class Projectile : MonoBehaviour
 		}
 		else
 		{
-			GameObject.Destroy(this.gameObject);
+			sc.enabled = false;
 		}
     }
 
@@ -63,8 +68,16 @@ public class Projectile : MonoBehaviour
 
 		Player = p;
 		Target = t;
+		isTargeted = p.Targeted;
 
-		transform.position = Player.transform.position + new Vector3(0, 0.5f, 1);
+		transform.position = transform.position + new Vector3(0, 0.5f, 0);
 		sc.enabled = true;
+	}
+
+	private void ProjectileExplode()
+	{
+		Player.ProjectileActive = false;
+
+		GameObject.Destroy(this.gameObject);
 	}
 }

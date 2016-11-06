@@ -136,5 +136,7 @@ public class GameManager : MonoBehaviour {
 			temp.GMInt = i - 1;
 			GameObject.Find(PlayerObject.name + " Icon").GetComponent<Image>().sprite = Character.GetComponent<AnimatorData>().HUDIcon;
 		}
+
+		//GameObject.DestroyImmediate(md);
 	}
 }

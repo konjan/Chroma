@@ -57,7 +57,7 @@ MonoBehaviour:
   CharacterList:
   - {fileID: 1000010166884310, guid: 8cd99970325209f488fd05a7787f6b32, type: 2}
   - {fileID: 1000014066790474, guid: 3c73b19af3566ea4195d180f82eac0ea, type: 2}
-  - {fileID: 1000012002912600, guid: ddeb1febc99a0074f96c142698906380, type: 2}
+  - {fileID: 1000011946374480, guid: ddeb1febc99a0074f96c142698906380, type: 2}
   cs1: {fileID: 0}
   cs2: {fileID: 0}
   levelSelected: ForestTemple

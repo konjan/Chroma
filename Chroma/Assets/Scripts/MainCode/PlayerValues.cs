@@ -72,6 +72,8 @@ public class PlayerValues : MonoBehaviour {
 	[HideInInspector]
 	public bool SecondaryAttack = false;
 
+	public bool ProjectileActive;
+
 	[HideInInspector]
 	public bool Hit = false;
 
