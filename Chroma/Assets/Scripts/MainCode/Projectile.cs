@@ -20,7 +20,7 @@ public class Projectile : MonoBehaviour
     void Start ()
     {
 		sc = this.GetComponent<SphereCollider>();
-        m_speed = 5.0f;
+        m_speed = 7.0f;
     }
 
 	// Update is called once per frame
