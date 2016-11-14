@@ -138,7 +138,6 @@ public class Attack : MonoBehaviour
 
     public void CollidersOn()
     {
-		Debug.Log("Colliders On");
 		if (Player.PrimaryAttack)
 		{
 			colliders[0].GetComponent<BoxCollider>().enabled = true;
@@ -158,8 +157,6 @@ public class Attack : MonoBehaviour
 		Player.SecondaryAttack = false;
 		Player.PrimaryAttack = false;
 		Player.isAttacking = false;
-
-		Debug.Log("Colliders Off");
 
         colliders[0].GetComponent<BoxCollider>().enabled = false;
 		TrailsSwitch(false);

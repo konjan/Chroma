@@ -106,9 +106,11 @@ public class Movement : MonoBehaviour
 		//-----Animation Code-----//
 		if ((Input.GetAxis(Player.Joystick + "Vertical") < 0 || Input.GetAxis(Player.Joystick + "Vertical") > 0 || Input.GetAxis(Player.Joystick + "Horizontal") < 0 || Input.GetAxis(Player.Joystick + "Horizontal") > 0))
 			isMoving = true;
-		else
+        else
 			isMoving = false;
 
+        if (Player.isBlocking)
+            isMoving = false;
 
 		if (Player.Targeted)
 		{

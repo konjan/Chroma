@@ -97,15 +97,16 @@ public class PlayerValues : MonoBehaviour {
 	public ParticleSystem Water;
 	public ParticleSystem Soul;
     public ParticleSystem pow;
+    public ParticleSystem StunPE;
     private float powActive = 0.2f;
 	private float changescene = 5;
-
-	private float SoulTime = 0.5f;
+    private float StunPETime = 1.0f;
+    private float SoulTime = 0.5f;
 	private bool SoulRaise = false;
 
     //-----Stun Timer
     private float staticTime = 0.0f;
-
+   
     // Use this for initialization
     void Start ()
     {
@@ -114,6 +115,7 @@ public class PlayerValues : MonoBehaviour {
 		GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         GM.SoulSliders[GMInt].maxValue = 100;
         pow.gameObject.SetActive(false);
+        StunPE.gameObject.SetActive(false);
 	}
 
 	void Update()
@@ -197,7 +199,7 @@ public class PlayerValues : MonoBehaviour {
                 isStunned = false;
         }
 
-       // pow.Play();
+        StunPE.Play();
 
         if (pow.gameObject.activeSelf == true)
         {
@@ -209,7 +211,19 @@ public class PlayerValues : MonoBehaviour {
                 powActive = 0.2f;
             }
         }
-	}
+
+
+        if (StunPE.gameObject.activeSelf == true)
+        {
+            StunPE.Play();
+            StunPETime -= Time.deltaTime;
+            if (StunPETime < 0)
+            {
+                StunPE.gameObject.SetActive(false);
+                StunPETime = 1.0f;
+            }
+        }
+    }
 
 	void OnTriggerEnter(Collider col)
 	{
@@ -222,7 +236,6 @@ public class PlayerValues : MonoBehaviour {
                 PlayerAnimation.SetTrigger("TempHit");
                 pow.gameObject.SetActive(true);
                 pow.transform.position = col.transform.position;			
-                //pow.Play();
 				SoulRaise = true;
 			}
             else if (col.gameObject.tag == "SecondaryAttack")
@@ -230,9 +243,9 @@ public class PlayerValues : MonoBehaviour {
 				m_Health -= Opponent.m_damage;
 				isAttacking = true;
                 PlayerAnimation.SetTrigger("TempHit");
-                pow.gameObject.SetActive(true);
-                pow.transform.position = col.transform.position;				
-               // pow.Play();
+                StunPE.gameObject.SetActive(true);
+                StunPE.transform.position = this.transform.position;
+                MakePlayerStunned(1.5f);			
 				SoulRaise = true;
 			}
 
