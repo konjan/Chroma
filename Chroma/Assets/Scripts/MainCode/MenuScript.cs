@@ -7,8 +7,11 @@ public class MenuScript : MonoBehaviour
 	// Use this for initialization
 	void Start()
     {
-		GameObject MenuDataObject = Instantiate(Resources.Load("MenuData", typeof(GameObject))) as GameObject;
-		MenuDataObject.name = "MenuData";
+		if (GameObject.Find("MenuData") == null)
+		{
+			GameObject MenuDataObject = Instantiate(Resources.Load("MenuData", typeof(GameObject))) as GameObject;
+			MenuDataObject.name = "MenuData";
+		}
     }
 
     // Update is called once per frame

@@ -15,7 +15,6 @@ public class Projectile : MonoBehaviour
 	public SphereCollider sc;
 	public ParticleSystem Impact;
 	public GameObject Orb;
-	private bool isTargeted;
     // Use this for initialization
     void Start ()
     {
@@ -45,18 +44,25 @@ public class Projectile : MonoBehaviour
 	}
     void OnCollisionEnter(Collision col)
     {
-		Orb.SetActive(false);
-		Impact.Play(true);
-
-		if (col.gameObject == Target.gameObject)
-        {
-			sc.enabled = false;
-
-			Target.m_Health -= ProjectileDamage;
+		if (col.gameObject == Target.gameObject && Target.isBlocking)
+		{
+			ProjectileReset();
 		}
 		else
 		{
-			sc.enabled = false;
+			Orb.SetActive(false);
+			Impact.Play(true);
+
+			if (col.gameObject == Target.gameObject)
+			{
+				sc.enabled = false;
+
+				Target.m_Health -= ProjectileDamage;
+			}
+			else
+			{
+				sc.enabled = false;
+			}
 		}
     }
 
@@ -68,7 +74,6 @@ public class Projectile : MonoBehaviour
 
 		Player = p;
 		Target = t;
-		isTargeted = p.Targeted;
 
 		transform.position = transform.position + new Vector3(0, 0.5f, 0);
 		sc.enabled = true;
@@ -76,8 +81,26 @@ public class Projectile : MonoBehaviour
 
 	private void ProjectileExplode()
 	{
+		timer = 5.0f;
+
 		Player.ProjectileActive = false;
 
 		GameObject.Destroy(this.gameObject);
+	}
+
+	private void ProjectileReset()
+	{
+		timer = 5.0f;
+
+		Player.ProjectileActive = false;
+		Target.ProjectileActive = true;
+
+		PlayerValues temp = Target;
+		Target = Player;
+		Player = temp;
+
+		transform.RotateAround(transform.position, Vector3.up, 180);
+
+		sc.enabled = true;
 	}
 }

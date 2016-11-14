@@ -66,14 +66,14 @@ public class Movement : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		if (!Player.isStasis)
+		if (!Player.isStasis && !Player.isStunned)
 		{
 			MoveCode();
 
 			if (Input.GetButtonDown(Player.Joystick + "Jump"))
 			{
-                //Double Jump code
-                /*
+				//Double Jump code
+				/*
 				if (!Player.isGrounded && Player.DoubleJump && !Player.isAttacking)
 				{
 					//Update to only activate on Normal Jump loop
@@ -85,19 +85,20 @@ public class Movement : MonoBehaviour
 					Player.rb.AddForce(0, 8, 0, ForceMode.Impulse);
 				}
 				*/
-                if (Player.isGrounded == true)
-                {
-                    Player.rb.AddForce(0, 8, 0, ForceMode.Impulse);
+				if (Player.isGrounded == true)
+				{
+					Player.rb.AddForce(0, 8, 0, ForceMode.Impulse);
 
-                    Player.isGrounded = false;
-                    Player.PlayerAnimation.SetBool("isGrounded", Player.isGrounded);
-                    Player.PlayerAnimation.SetTrigger("JumpPressed");
-                }
+					Player.isGrounded = false;
+					Player.PlayerAnimation.SetBool("isGrounded", Player.isGrounded);
+					Player.PlayerAnimation.SetTrigger("JumpPressed");
+				}
 
-             
+
 			}
 		}
 		else
+			transform.rotation = transform.rotation;
 			transform.position = transform.position;
     }
 
@@ -108,7 +109,6 @@ public class Movement : MonoBehaviour
 			isMoving = true;
 		else
 			isMoving = false;
-
 
 		if (Player.Targeted)
 		{

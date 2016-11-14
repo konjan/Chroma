@@ -73,7 +73,7 @@ public class Attack : MonoBehaviour
 		}  
         if (isDashing && dashTime >= 0.0f)
             Dash();
-		else if (dashTime <= 0.0f)
+		else if (isDashing && dashTime <= 0.0f)
 		{
 			isDashing = false;
 			Player.isStasis = false;

@@ -23,10 +23,11 @@ public class PlayerValues : MonoBehaviour {
    
     //-----Status Variables, Damage to be moved to upcoming "Move Struct" in "Attack.cs"
     public float m_Health;
+	private bool lose = false;
 
     public ElemTrait Attribute = ElemTrait.UNASPECTED;
 
-	private bool isStunned = false;
+	public bool isStunned = false;
     public bool isStasis = false;
 	[HideInInspector]
 	public bool isBlocking = false;
@@ -98,7 +99,7 @@ public class PlayerValues : MonoBehaviour {
 	public ParticleSystem Soul;
     public ParticleSystem pow;
     private float powActive = 0.2f;
-	private float changescene = 5;
+	private float changescene = 5.0f;
 
 	private float SoulTime = 0.5f;
 	private bool SoulRaise = false;
@@ -137,22 +138,28 @@ public class PlayerValues : MonoBehaviour {
 		GM.PlayerSliders[GMInt].value = m_Health;
 		GM.SoulSliders[GMInt].value = m_soulAmount;
 
-		//Check(Attribute, Opponent.GetComponent<PlayerValues>().Attribute);
+		Check(Attribute, Opponent.GetComponent<PlayerValues>().Attribute);
 
 		if (m_Health <= 0)
         {
-            GM.KOText.gameObject.SetActive(true);
-			GM.Win.text = tag.ToString();
-			GM.Win.gameObject.SetActive(true);
+			GM.KOText.gameObject.SetActive(true);
 
-			changescene -= Time.deltaTime;
+			if (changescene == 5.0f)
+			{ 
+				isStasis = true;
+				Opponent.isStasis = true;
+				PlayerAnimation.SetTrigger("Lose");
+				Opponent.PlayerAnimation.SetTrigger("Win");
 
-			if(changescene <= 0)
-			{
-				Application.LoadLevel("Main Menu");
+				changescene -= Time.deltaTime;
 			}
-        }
+			else if(changescene <= 0)
+				Application.LoadLevel("Main Menu");
+			else
+				changescene -= Time.deltaTime;
+		}
 
+		//-----Update SOUL-----//
 		if (SoulRaise == true)
 		{
 			SoulTime -= Time.deltaTime;
@@ -163,8 +170,6 @@ public class PlayerValues : MonoBehaviour {
 				SoulTime = 0.5f;
 			}
 		}
-
-
         if (m_soulAmount > 33.3f)
         {
             ChangeElement();
@@ -174,12 +179,13 @@ public class PlayerValues : MonoBehaviour {
 				m_soulAmount = 100;
 			}
 		}
+		//--------------------//
 
+		//-----Remove Attribute after time-----//
         if (Attribute != ElemTrait.UNASPECTED)
         {
             timeThing -= Time.deltaTime;        
         }
-
         if (timeThing <= 0.0f)
         {
             Attribute = ElemTrait.UNASPECTED;
@@ -189,15 +195,14 @@ public class PlayerValues : MonoBehaviour {
             Water.gameObject.SetActive(false);
             timeThing = 5.0f;
         }
+		//-------------------------------------//
 
-        if (isStunned)
-        {
-            staticTime -= Time.deltaTime;
-            if (staticTime <= 0.0f)
-                isStunned = false;
-        }
-
-       // pow.Play();
+		if (isStunned)
+		{
+			staticTime -= Time.deltaTime;
+			if (staticTime <= 0.0f)
+				isStunned = false;
+		}
 
         if (pow.gameObject.activeSelf == true)
         {
@@ -222,7 +227,7 @@ public class PlayerValues : MonoBehaviour {
                 PlayerAnimation.SetTrigger("TempHit");
                 pow.gameObject.SetActive(true);
                 pow.transform.position = col.transform.position;			
-                //pow.Play();
+
 				SoulRaise = true;
 			}
             else if (col.gameObject.tag == "SecondaryAttack")
@@ -231,8 +236,8 @@ public class PlayerValues : MonoBehaviour {
 				isAttacking = true;
                 PlayerAnimation.SetTrigger("TempHit");
                 pow.gameObject.SetActive(true);
-                pow.transform.position = col.transform.position;				
-               // pow.Play();
+                pow.transform.position = col.transform.position;
+
 				SoulRaise = true;
 			}
 
@@ -246,7 +251,7 @@ public class PlayerValues : MonoBehaviour {
             PlayerAnimation.SetBool("isGrounded", true);
             isGrounded = true;
         }
-        if (col.gameObject.tag == "projectile")
+        if (col.gameObject.tag == "projectile" && !this.isBlocking)
             m_Health -= col.gameObject.GetComponent<Projectile>().ProjectileDamage * Opponent.m_damage;
     }
 
