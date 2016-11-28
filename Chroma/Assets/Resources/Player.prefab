@@ -147,7 +147,7 @@ GameObject:
   - 114: {fileID: 114000010016831798}
   - 65: {fileID: 65000013045487048}
   m_Layer: 0
-  m_Name: Player 1
+  m_Name: Player
   m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -518,6 +518,7 @@ MonoBehaviour:
   rb: {fileID: 54000011657751886}
   m_Health: 0
   Attribute: 5
+  isStunned: 0
   isStasis: 0
   isBlocking: 0
   m_damage: 5
@@ -543,7 +544,7 @@ MonoBehaviour:
   Water: {fileID: 198000011902490010}
   Soul: {fileID: 0}
   pow: {fileID: 198000011520856642}
-  StunPE: {fileID: 0}
+  StunPE: {fileID: 198000010116309864}
 --- !u!114 &114000013464980594
 MonoBehaviour:
   m_ObjectHideFlags: 1

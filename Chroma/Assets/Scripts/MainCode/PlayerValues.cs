@@ -26,7 +26,7 @@ public class PlayerValues : MonoBehaviour {
 
     public ElemTrait Attribute = ElemTrait.UNASPECTED;
 
-	private bool isStunned = false;
+	public bool isStunned = false;
     public bool isStasis = false;
 	[HideInInspector]
 	public bool isBlocking = false;
@@ -245,7 +245,7 @@ public class PlayerValues : MonoBehaviour {
                 PlayerAnimation.SetTrigger("TempHit");
                 StunPE.gameObject.SetActive(true);
                 StunPE.transform.position = this.transform.position;
-                MakePlayerStunned(1.5f);			
+                MakePlayerStunned(0.5f);			
 				SoulRaise = true;
 			}
 
